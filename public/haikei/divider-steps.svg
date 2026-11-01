@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 60" fill="none" preserveAspectRatio="none">
+  <path d="M0 0 H300 V30 H600 V15 H900 V45 H1200 V60 H0 Z" fill="currentColor" fill-opacity="0.04" />
+  <line x1="0" y1="59" x2="1200" y2="59" stroke="currentColor" stroke-opacity="0.08" stroke-width="1" stroke-dasharray="4 4" />
+</svg>

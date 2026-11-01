@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio Design Hackathon 2026 - Master Strategy Plan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  @page {
+    size: A4;
+    margin: 11mm 13mm 11mm 13mm;
+    @bottom-right {
+      content: counter(page);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8pt;
+      color: #71717a;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #18181b;
+    background: #ffffff;
+    line-height: 1.45;
+    font-size: 8.8pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Page Break Controls */
+  .page-break {
+    page-break-before: always;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+  }
+
+  /* Header & Cover */
+  .cover-card {
+    background: linear-gradient(135deg, #09090b 0%, #18181b 50%, #27272a 100%);
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    position: relative;
+    border: 1px solid #3f3f46;
+  }
+
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 9999px;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .badge-purple { background: #6366f1; color: #ffffff; }
+  .badge-emerald { background: #10b981; color: #ffffff; }
+  .badge-dark { background: rgba(255,255,255,0.12); color: #e4e4e7; border: 1px solid rgba(255,255,255,0.18); }
+
+  .cover-title {
+    font-size: 19pt;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+    margin-bottom: 5px;
+    background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .cover-subtitle {
+    font-size: 9.2pt;
+    color: #a1a1aa;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .meta-item small {
+    display: block;
+    font-size: 6.8pt;
+    color: #a1a1aa;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+  }
+
+  .meta-item strong {
+    font-size: 8.5pt;
+    color: #f4f4f5;
+    font-weight: 600;
+  }
+
+  /* Section Headers */
+  h2 {
+    font-size: 12pt;
+    font-weight: 800;
+    color: #09090b;
+    border-bottom: 2px solid #e4e4e7;
+    padding-bottom: 4px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    letter-spacing: -0.3px;
+  }
+
+  h2::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 14px;
+    background: #4f46e5;
+    border-radius: 2px;
+  }
+
+  h3 {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #27272a;
+    margin-top: 8px;
+    margin-bottom: 3px;
+  }
+
+  p {
+    margin-bottom: 5px;
+    color: #3f3f46;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 6px 0 10px 0;
+    font-size: 8pt;
+  }
+
+  th {
+    background: #f4f4f5;
+    color: #18181b;
+    text-align: left;
+    padding: 5px 8px;
+    font-weight: 700;
+    border: 1px solid #e4e4e7;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  td {
+    padding: 5px 8px;
+    border: 1px solid #e4e4e7;
+    color: #27272a;
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td {
+    background: #fafafa;
+  }
+
+  /* Callout Cards */
+  .callout {
+    border-radius: 6px;
+    padding: 7px 11px;
+    margin: 6px 0 9px 0;
+    font-size: 8pt;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .callout-gold {
+    background: #fefce8;
+    border: 1px solid #fef08a;
+    border-left: 4px solid #eab308;
+    color: #713f12;
+  }
+
+  .callout-info {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid #3b82f6;
+    color: #1e3a8a;
+  }
+
+  .callout-success {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-left: 4px solid #10b981;
+    color: #064e3b;
+  }
+
+  /* Grid Layouts */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .card {
+    border: 1px solid #e4e4e7;
+    border-radius: 6px;
+    padding: 7px 10px;
+    background: #ffffff;
+  }
+
+  .card-highlight {
+    background: #fafafa;
+    border-color: #d4d4d8;
+  }
+
+  .card-title {
+    font-size: 8.8pt;
+    font-weight: 700;
+    color: #09090b;
+    margin-bottom: 3px;
+  }
+
+  .card-body {
+    font-size: 7.8pt;
+    color: #52525b;
+    line-height: 1.4;
+  }
+
+  /* Code / Tags */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    background: #f4f4f5;
+    padding: 1px 3px;
+    border-radius: 3px;
+    color: #d946ef;
+    border: 1px solid #e4e4e7;
+  }
+
+  ul, ol {
+    margin-left: 16px;
+    margin-bottom: 6px;
+    font-size: 8pt;
+    color: #3f3f46;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  /* Progress Checklist */
+  .checklist {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  .checklist li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 2px;
+    font-size: 7.8pt;
+    color: #27272a;
+    line-height: 1.35;
+  }
+
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 1px;
+    top: -1px;
+    font-size: 9pt;
+    color: #6366f1;
+    font-weight: bold;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 1px 6px;
+    background: #f4f4f5;
+    border: 1px solid #e4e4e7;
+    border-radius: 4px;
+    font-size: 7pt;
+    font-weight: 600;
+    color: #3f3f46;
+    margin-right: 3px;
+    margin-bottom: 3px;
+  }
+
+  .tag-accent {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+    color: #4338ca;
+  }
+
+  /* Footer */
+  .doc-footer {
+    margin-top: 14px;
+    padding-top: 8px;
+    border-top: 1px solid #e4e4e7;
+    font-size: 7.2pt;
+    color: #71717a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .callout-gold {
+    background: #fefce8;
+    border: 1px solid #fef08a;
+    border-left: 4px solid #eab308;
+    color: #713f12;
+  }
+
+  .callout-info {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid #3b82f6;
+    color: #1e3a8a;
+  }
+
+  .callout-success {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-left: 4px solid #10b981;
+    color: #064e3b;
+  }
+
+  /* Grid Layouts */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .card {
+    border: 1px solid #e4e4e7;
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: #ffffff;
+  }
+
+  .card-highlight {
+    background: #fafafa;
+    border-color: #d4d4d8;
+  }
+
+  .card-title {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #09090b;
+    margin-bottom: 4px;
+  }
+
+  .card-body {
+    font-size: 8.2pt;
+    color: #52525b;
+    line-height: 1.45;
+  }
+
+  /* Code / Tags */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.8pt;
+    background: #f4f4f5;
+    padding: 1px 4px;
+    border-radius: 4px;
+    color: #d946ef;
+    border: 1px solid #e4e4e7;
+  }
+
+  ul, ol {
+    margin-left: 18px;
+    margin-bottom: 10px;
+    font-size: 8.5pt;
+    color: #3f3f46;
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+
+  /* Progress Checklist */
+  .checklist {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  .checklist li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 5px;
+    font-size: 8.2pt;
+    color: #27272a;
+  }
+
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 2px;
+    top: 0px;
+    font-size: 10pt;
+    color: #6366f1;
+    font-weight: bold;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 7px;
+    background: #f4f4f5;
+    border: 1px solid #e4e4e7;
+    border-radius: 4px;
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: #3f3f46;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+
+  .tag-accent {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+    color: #4338ca;
+  }
+
+  /* Footer */
+  .doc-footer {
+    margin-top: 24px;
+    padding-top: 10px;
+    border-top: 1px solid #e4e4e7;
+    font-size: 7.5pt;
+    color: #71717a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+
+  <!-- COVER / HEADER -->
+  <div class="cover-card">
+    <div class="badge-row">
+      <span class="badge badge-purple">Skillinf Hackathon 2026</span>
+      <span class="badge badge-emerald">Unstop Official Track</span>
+      <span class="badge badge-dark">Gold Standard Blueprint</span>
+    </div>
+    <div class="cover-title">Portfolio Design Hackathon 2026<br>Master Strategy & Execution Plan</div>
+    <div class="cover-subtitle">A comprehensive, end-to-end blueprint to design, engineer, deploy, and showcase an award-winning portfolio.</div>
+    <div class="cover-meta">
+      <div class="meta-item">
+        <small>Competition</small>
+        <strong>Skillinf 2026</strong>
+      </div>
+      <div class="meta-item">
+        <small>Platform</small>
+        <strong>Unstop</strong>
+      </div>
+      <div class="meta-item">
+        <small>Format</small>
+        <strong>Individual Submission</strong>
+      </div>
+      <div class="meta-item">
+        <small>Target Score</small>
+        <strong>100% Evaluation Rubric</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: EXECUTIVE BRIEF & OBJECTIVES -->
+  <div class="avoid-break">
+    <h2>1. Executive Summary & Challenge Objectives</h2>
+    <p>
+      The <strong>Skillinf Portfolio Design Hackathon 2026</strong> tests participants on their ability to build a world-class digital portfolio that balances technical excellence, original creative flair, micro-interactions, responsive ergonomics, and high-conversion personal branding.
+    </p>
+
+    <div class="callout callout-gold">
+      <div>
+        <strong>The Winning Formula:</strong>
+        Judges review hundreds of portfolios. Standard cookie-cutter templates will be filtered out immediately. To secure a top rank, your portfolio must provide an unforgettable <em>"First 10-Second Wow Factor"</em> (fluid visual identity & 3D canvas), followed by <em>rock-solid engineering substance</em> (interactive project case studies, high performance Lighthouse score, and working functional utilities).
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card card-highlight">
+        <div class="card-title">1. Deliverable 1: Live URL</div>
+        <div class="card-body">High-speed, production-grade deployment on Vercel with zero latency, custom domain or clean URL, SSL enabled, and fully accessible without login gates.</div>
+      </div>
+      <div class="card card-highlight">
+        <div class="card-title">2. Deliverable 2: Resume PDF</div>
+        <div class="card-body">Modern, ATS-friendly, single/two-page PDF resume uploaded to Unstop and also viewable/downloadable directly from the live portfolio website.</div>
+      </div>
+      <div class="card card-highlight">
+        <div class="card-title">3. Evaluation Standard</div>
+        <div class="card-body">7 strict judging criteria: Creativity, UI/UX, Responsiveness, Functionality, Project Presentation, Animations/3D, and Professional Polish.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: EVALUATION CRITERIA MATRIX -->
+  <div class="avoid-break">
+    <h2>2. Evaluation Criteria Matrix & Winning Countermeasures</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 22%;">Official Criterion</th>
+          <th style="width: 38%;">What Judges Evaluate</th>
+          <th style="width: 40%;">Our Strategy to Secure Top Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Creativity & Originality</strong></td>
+          <td>Unique aesthetic, distinct personality, non-generic layouts, clever metaphors.</td>
+          <td>Spatial Bento Grid system with dynamic particle constellation, bespoke typography pairings, and a customized personal design signature.</td>
+        </tr>
+        <tr>
+          <td><strong>UI/UX Design & Appeal</strong></td>
+          <td>Visual balance, typography hierarchy, dark/light contrast, spacing discipline.</td>
+          <td>Zinc-950 modern dark theme with emerald/violet glow accents, glassmorphic frosted cards, and customizable UI accents.</td>
+        </tr>
+        <tr>
+          <td><strong>Responsiveness & Mobile</strong></td>
+          <td>Seamless experience from 320px smartphones to 4K ultra-wide monitors.</td>
+          <td>Mobile-first adaptive layouts: floating bottom dock on mobile, sticky magnetic bar on desktop, touch gesture support, zero layout shift.</td>
+        </tr>
+        <tr>
+          <td><strong>Functionality & Navigation</strong></td>
+          <td>Smooth routing, broken link check, interactive forms, search palette.</td>
+          <td>Keyboard-first Command Palette (<code>Ctrl+K</code>), deep-link section anchors, one-click copy contact/email toast, and interactive project filters.</td>
+        </tr>
+        <tr>
+          <td><strong>Project Presentation</strong></td>
+          <td>Depth of projects, architecture clarity, code links, live demo buttons.</td>
+          <td>Interactive project cards with tags, metrics (e.g. "99.8% accuracy", "10k+ users"), embedded video/GIF previews, and direct GitHub links.</td>
+        </tr>
+        <tr>
+          <td><strong>Animations & 3D Effects</strong></td>
+          <td>Fluid transitions without lag, 60fps frame rate, tactile micro-interactions.</td>
+          <td>Framer Motion scroll triggers, 3D card tilts, magnetic cursor follow, and a lightweight Three.js/Canvas interactive background.</td>
+        </tr>
+        <tr>
+          <td><strong>Professional Attention to Detail</strong></td>
+          <td>SEO, Open Graph social cards, favicon suite, clean code, Lighthouse 95+.</td>
+          <td>Production bundle minification, automated accessibility (ARIA), fast TTFB, full Open Graph social card preview, and in-site PDF resume modal.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 3: RECOMMENDED ARCHITECTURE & TECH STACK -->
+  <div class="avoid-break">
+    <h2>3. Production Architecture & Technology Stack</h2>
+    <p>We select a modern, industry-standard stack that maximizes rendering speed, developer productivity, and fluid animation fidelity:</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Core Web Engine</div>
+        <div class="card-body">
+          <p><strong>Next.js 15 (App Router) + React 19 + TypeScript</strong></p>
+          <div style="margin-top: 6px;">
+            <span class="tag tag-accent">Next.js 15</span>
+            <span class="tag tag-accent">React 19</span>
+            <span class="tag tag-accent">TypeScript</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">PostCSS</span>
+          </div>
+          <p style="margin-top: 6px; font-size: 8pt; color: #52525b;">
+            Provides instant Server-Side Generation (SSG), lightning-fast page loads, automatic image optimization, and full TypeScript type safety.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Animation & Visual Effects</div>
+        <div class="card-body">
+          <p><strong>Framer Motion + Three.js / Canvas + Lucide Icons</strong></p>
+          <div style="margin-top: 6px;">
+            <span class="tag tag-accent">Framer Motion</span>
+            <span class="tag tag-accent">Three.js / Canvas</span>
+            <span class="tag tag-accent">Lucide-React</span>
+            <span class="tag">Canvas-Confetti</span>
+          </div>
+          <p style="margin-top: 6px; font-size: 8pt; color: #52525b;">
+            Powers buttery 60 FPS scroll-triggered animations, spring physics, interactive particle mesh, and crisp SVG iconography.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Component System & Utilities</div>
+        <div class="card-body">
+          <p><strong>Radix UI / Shadcn UI Primitives + Sonner Toasts</strong></p>
+          <div style="margin-top: 6px;">
+            <span class="tag">Radix Primitives</span>
+            <span class="tag">CMDK (Command Palette)</span>
+            <span class="tag">Sonner</span>
+            <span class="tag">clsx / twMerge</span>
+          </div>
+          <p style="margin-top: 6px; font-size: 8pt; color: #52525b;">
+            Guarantees 100% accessible modals, tooltips, dialogs, and instant notification toasts when judges copy email or download your resume.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Deployment & Hosting Platform</div>
+        <div class="card-body">
+          <p><strong>Vercel Global Edge Network</strong></p>
+          <div style="margin-top: 6px;">
+            <span class="tag tag-accent">Vercel Edge</span>
+            <span class="tag tag-accent">HTTPS / SSL</span>
+            <span class="tag">Automated CI/CD</span>
+            <span class="tag">Custom Domain</span>
+          </div>
+          <p style="margin-top: 6px; font-size: 8pt; color: #52525b;">
+            Global CDN caching guarantees sub-100ms load times worldwide, ensuring judges on Unstop experience instant zero-lag responsiveness.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: PAGE STRUCTURE & COMPONENT BLUEPRINT -->
+  <div class="avoid-break">
+    <h2>4. Blueprint of Portfolio Sections & Interactive Features</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 18%;">Section</th>
+          <th style="width: 42%;">Core Components & Content</th>
+          <th style="width: 40%;">Special Interactive Enhancements</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Navigation & Header</strong></td>
+          <td>Sticky frosted glass navbar, brand logo, quick links (About, Work, Skills, Contact), resume download CTA.</td>
+          <td>Command Menu shortcut badge (<code>Ctrl + K</code>), theme switcher (Dark/Light), audio click toggle.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Hero Stage</strong></td>
+          <td>Status badge ("🟢 Available for Work"), dynamic typewriter headline, magnetic primary CTA ("Explore My Work"), secondary ("Download Resume").</td>
+          <td>Interactive 3D particle constellation / node network that reacts to mouse position and touch movements.</td>
+        </tr>
+        <tr>
+          <td><strong>3. Bento Grid Showcase</strong></td>
+          <td>Modular summary tiles: Total Experience, Projects Shipped, Technologies Mastered, Current Focus, Live Timezone/Location.</td>
+          <td>GitHub live commit activity pulse, Spotify/Code listening widget, interactive hover reveal effect on cards.</td>
+        </tr>
+        <tr>
+          <td><strong>4. Featured Projects (Deep Dive)</strong></td>
+          <td>3-4 flagship projects with high-resolution mockups, problem statement, technical architecture, and impact metrics.</td>
+          <td>Category filter tabs (Full Stack, AI/ML, Cloud), Live Demo button with external link icon, GitHub source code modal.</td>
+        </tr>
+        <tr>
+          <td><strong>5. Interactive Skills Matrix</strong></td>
+          <td>Categorized skill tree: Languages, Frontend, Backend & Databases, AI/Data, Cloud & DevOps, Tools & Workflows.</td>
+          <td>Interactive search/filter bar, proficiency radar chart or badge tags with hover descriptions of what you built with each tool.</td>
+        </tr>
+        <tr>
+          <td><strong>6. Experience & Milestones</strong></td>
+          <td>Timeline displaying education, internships/work history, hackathon victories, certifications, and publications.</td>
+          <td>Expandable timeline nodes with credential verification links and preview badges.</td>
+        </tr>
+        <tr>
+          <td><strong>7. Contact Hub & Socials</strong></td>
+          <td>Functional contact message form (Web3Forms/Resend), direct email address, LinkedIn, GitHub, X, Unstop profile.</td>
+          <td>"Copy Email" button with instant animated checkmark toast notification, confetti blast upon successful message send.</td>
+        </tr>
+        <tr>
+          <td><strong>8. Integrated Resume Hub</strong></td>
+          <td>Full embedded PDF viewer modal with download button, print button, and clean ATS-compliant resume download link.</td>
+          <td>Instant download fallback, opens in dedicated tab if requested, seamlessly matching hackathon submission requirements.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 5: STEP-BY-STEP EXECUTION ROADMAP -->
+  <div class="avoid-break">
+    <h2>5. Implementation Sprints & Milestone Schedule</h2>
+    <p>A rigorous, structured 5-stage sprint to transition from empty folder to award-ready deployment:</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Sprint 1: Architecture & Scaffolding</div>
+        <ul class="checklist">
+          <li>Initialize Next.js 15 project with TypeScript and Tailwind CSS</li>
+          <li>Configure font families (Plus Jakarta Sans & JetBrains Mono)</li>
+          <li>Setup color variables, dark/light theme provider, and global CSS</li>
+          <li>Install Lucide icons, Framer Motion, and utility libraries</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Sprint 2: Hero & Bento Showcase</div>
+        <ul class="checklist">
+          <li>Build responsive Navigation bar with mobile hamburger menu</li>
+          <li>Implement Hero section with dynamic headline and magnetic CTAs</li>
+          <li>Integrate 3D Canvas / interactive particle background</li>
+          <li>Develop high-aesthetic Bento Grid with live stat cards</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Sprint 3: Projects & Skills Engineering</div>
+        <ul class="checklist">
+          <li>Format 3-4 flagship projects with architecture descriptions</li>
+          <li>Add live preview links, GitHub repository buttons, and tech tags</li>
+          <li>Construct interactive categorized Skills Matrix with search filter</li>
+          <li>Build Experience, Education, and Hackathon Milestone Timeline</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Sprint 4: Interaction Polish & Easter Eggs</div>
+        <ul class="checklist">
+          <li>Implement Command Palette (<code>Ctrl+K</code>) for keyboard navigation</li>
+          <li>Build Contact section with working message handler & copy toast</li>
+          <li>Embed interactive PDF Resume viewer and direct download button</li>
+          <li>Add smooth scroll, micro-animations, and confetti triggers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 12px;">
+      <div class="card-title">Sprint 5: Production Deployment & Unstop Submission</div>
+      <ul class="checklist">
+        <li>Audit Lighthouse metrics: aim for 95+ in Performance, Accessibility, SEO, and Best Practices</li>
+        <li>Deploy project directly to Vercel production edge with custom or clean domain</li>
+        <li>Conduct cross-browser and cross-device testing (iPhone Safari, Android Chrome, Mac Safari, Windows Chrome)</li>
+        <li>Verify PDF resume is valid, formatted cleanly, and ready for upload alongside the live portfolio link on Unstop</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 6: PRE-SUBMISSION AUDIT CHECKLIST -->
+  <div class="avoid-break">
+    <h2>6. 20-Point Pre-Submission Audit Checklist</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Accessibility & UX Standards</div>
+        <ul class="checklist">
+          <li>Zero broken links (all external links open in <code>target="_blank"</code> with <code>rel="noopener"</code>)</li>
+          <li>Mobile viewport responsive down to 320px width without horizontal scroll</li>
+          <li>Touch targets are at least 44x44px for thumb tap ergonomics</li>
+          <li>Color contrast ratio meets WCAG AA standards (4.5:1 minimum)</li>
+          <li>ARIA labels attached to all icon-only buttons and theme toggles</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Hackathon Compliance & Delivery</div>
+        <ul class="checklist">
+          <li>Live URL is publicly accessible without login/password gates</li>
+          <li>Resume PDF is current, matches portfolio content, and is under 5MB</li>
+          <li>No sensitive private information (passwords, private API keys, full address)</li>
+          <li>Live demo links and GitHub repositories for all listed projects work</li>
+          <li>Favicon, page title, and OpenGraph social banner preview configured</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: SUBMISSION PROTOCOL -->
+  <div class="avoid-break">
+    <h2>7. Unstop Submission Protocol</h2>
+    <div class="callout callout-success">
+      <div>
+        <strong>Final Submission Delivery:</strong>
+        When submitting on the Unstop portal before the deadline, ensure:
+        <ol style="margin-top: 6px; margin-left: 16px;">
+          <li><strong>Live Portfolio URL:</strong> <code>https://your-portfolio-name.vercel.app</code> (tested in Incognito mode).</li>
+          <li><strong>Resume PDF:</strong> <code>YourName_Resume_2026.pdf</code> (uploaded in PDF format).</li>
+          <li><strong>Short Elevator Pitch:</strong> A 2-3 sentence overview highlighting your focus, key technologies used, and the interactive features judges should try (e.g. "Press Ctrl+K for Command Menu").</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="doc-footer">
+      <span>Skillinf Portfolio Design Hackathon 2026 Strategy Plan</span>
+      <span>Prepared for Hackathon Participant | Powered by Antigravity</span>
+    </div>
+  </div>
+
+</body>
+</html>

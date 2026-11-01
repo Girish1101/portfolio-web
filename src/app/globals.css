@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Editorial Light Mode (Warm tactile paper, ink-black text, vermilion accent) */
+    --bg-page: #fbfbf9;
+    --bg-surface: #f4f3ed;
+    --bg-surface-elevated: #ffffff;
+    --bg-subtle: #eae8df;
+    --text-primary: #141416;
+    --text-secondary: #4a4d52;
+    --text-muted: #767b85;
+    --border-subtle: #e3e0d5;
+    --border-strong: #c8c5b8;
+    --accent: #c8431e;
+    --accent-subtle: #fbeee8;
+    --accent-hover: #b03816;
+    --badge-bg: #eceae1;
+  }
+
+  .dark {
+    /* Technical Workshop Ink Dark Mode (Deep drafting ink, warm chalk text) */
+    --bg-page: #0d0f12;
+    --bg-surface: #14171c;
+    --bg-surface-elevated: #1a1e24;
+    --bg-subtle: #21262f;
+    --text-primary: #f2f1ec;
+    --text-secondary: #a3a7b0;
+    --text-muted: #6e737d;
+    --border-subtle: #222730;
+    --border-strong: #333a46;
+    --accent: #e15532;
+    --accent-subtle: #291813;
+    --accent-hover: #ef6745;
+    --badge-bg: #1c212a;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* Fluid typography utilities */
+  h1, .hero-display {
+    font-family: var(--font-serif), Georgia, serif;
+    letter-spacing: -0.03em;
+  }
+
+  h2, h3, h4 {
+    letter-spacing: -0.02em;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+  }
+
+  /* Editorial drafting rules */
+  .drafting-line {
+    border-color: var(--border-subtle);
+  }
+
+  /* Subtle tactile grain overlay */
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.04;
+    background-image: url("/haikei/grain.svg");
+  }
+
+  .dark .grain-overlay {
+    opacity: 0.055;
+  }
+}
+
+/* Custom interactive craft classes */
+.editorial-border {
+  border: 1px solid var(--border-subtle);
+}
+
+.editorial-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.editorial-card:hover {
+  border-color: var(--border-strong);
+}
+
+/* Subtle architectural grid pattern */
+.bg-blueprint {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+}
+
+/* Custom craft cursor state only on links and interactive elements (WCAG/editorial craft) */
+@media (hover: hover) and (pointer: fine) {
+  a,
+  button:not(:disabled),
+  [role="button"],
+  .cursor-craft {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='4' fill='%23c8431e'/%3E%3Ccircle cx='12' cy='12' r='8' stroke='%23c8431e' stroke-width='1.5' stroke-opacity='0.45'/%3E%3C/svg%3E") 12 12, pointer;
+  }
+
+  .dark a,
+  .dark button:not(:disabled),
+  .dark [role="button"] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='4' fill='%23e15532'/%3E%3Ccircle cx='12' cy='12' r='8' stroke='%23e15532' stroke-width='1.5' stroke-opacity='0.5'/%3E%3C/svg%3E") 12 12, pointer;
+  }
+}

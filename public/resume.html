@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Girish Sharma - Resume</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  @page {
+    size: letter;
+    margin: 12mm 14mm 12mm 14mm;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #111827;
+    background: #ffffff;
+    font-size: 8.8pt;
+    line-height: 1.4;
+  }
+  .header { text-align: center; border-bottom: 1.5px solid #111827; padding-bottom: 8px; margin-bottom: 10px; }
+  .name { font-size: 20pt; font-weight: 700; letter-spacing: -0.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .contact { font-size: 8.5pt; color: #374151; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .contact a { color: #111827; text-decoration: none; }
+  h2 {
+    font-size: 10.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #9ca3af;
+    padding-bottom: 2px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    color: #111827;
+  }
+  .entry { margin-bottom: 8px; }
+  .entry-header { display: flex; justify-content: space-between; font-weight: 600; font-size: 9pt; }
+  .entry-sub { display: flex; justify-content: space-between; font-style: italic; color: #374151; font-size: 8.5pt; margin-bottom: 2px; }
+  ul { margin-left: 16px; margin-top: 2px; }
+  li { margin-bottom: 2px; text-align: justify; }
+  .tech-line { margin-top: 2px; font-size: 8.2pt; color: #374151; }
+  .skills-category { margin-bottom: 3px; }
+  .skills-category strong { color: #111827; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="name">GIRISH SHARMA</div>
+  <div class="contact">
+    <span>✉ sharmagirish0a26z@gmail.com</span>
+    <span>✆ +91 8949758239</span>
+    <span><a href="https://www.linkedin.com/in/girish-sharma-sde/" target="_blank">🔗 linkedin.com/in/girish-sharma-sde/</a></span>
+    <span>🐙 github.com/Girish1101</span>
+  </div>
+</div>
+
+<h2>Education</h2>
+<div class="entry">
+  <div class="entry-header">
+    <span>National Institute of Technology Karnataka (NITK)</span>
+    <span>Aug'23 – Present</span>
+  </div>
+  <div class="entry-sub">
+    <span>Bachelor of Technology in Computer Science and Engineering</span>
+    <span>GPA: 7.70 / 10.0</span>
+  </div>
+</div>
+
+<h2>Work Experience</h2>
+<div class="entry">
+  <div class="entry-header">
+    <span>Software Engineering Intern (SDE) — Tech Mahindra</span>
+    <span>May'26 – July'26</span>
+  </div>
+  <ul>
+    <li>Architected an end-to-end AI-driven observability platform using FastAPI and Kafka, automating log parsing, real-time anomaly detection, and incident remediation across distributed systems.</li>
+    <li>Engineered an autonomous Root-Cause Analysis (RCA) engine with LangGraph multi-agent orchestration and a Neo4j knowledge graph, slashing MTTR from 40+ minutes to seconds across 1.12M+ requests (87% confidence).</li>
+    <li>Developed a self-monitoring telemetry framework with 14 real-time health detectors and secure data masking-demasking modules to monitor LLM gateways, vector indices, and relational databases.</li>
+    <li>Built a WireMock service-virtualization suite of 43 calibrated stubs from 1.5M+ production logs, achieving zero-risk CI pipeline testing under loads of 400 requests/sec with a 94.6% pass rate across 160k+ checks.</li>
+  </ul>
+  <div class="tech-line"><strong>Technologies:</strong> LangGraph, FastAPI, Kafka, Neo4j, OpenSearch, WireMock, Docker, Multi-Agent Systems, CI/CD, RCA Automation</div>
+</div>
+
+<h2>Projects</h2>
+<div class="entry">
+  <div class="entry-header">
+    <span>TraceID — Investigative Facial Landmarking & Vector Similarity Matching</span>
+    <span>July'26 – Aug'26</span>
+  </div>
+  <div class="entry-sub">Next.js, Python Flask, PostgreSQL (Neon), FaceNet, MTCNN</div>
+  <ul>
+    <li>Architected TraceID, a full-stack investigative platform that cross-references field photography against missing-person dossiers using multi-box face detection and vector similarity matching.</li>
+    <li>Connected a Next.js frontend to Python Flask microservices for real-time MTCNN facial landmarking and 512-dim FaceNet embeddings against a Neon PostgreSQL database.</li>
+    <li>Achieved >96% candidate retrieval accuracy and reduced search latency to &lt;120ms per query through L2-normalized feature vector indexing.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <span>Meetlnk — Meeting Intelligence Platform with Hybrid BM25 & Dense RAG</span>
+    <span>Aug'26 – Sept'26</span>
+  </div>
+  <div class="entry-sub">FastAPI, Python, LangChain, Pinecone Vector DB, OpenAI API, Next.js</div>
+  <ul>
+    <li>Architected Meetlnk, an end-to-end meeting intelligence platform leveraging Retrieval-Augmented Generation (RAG) to parse long-form conversation transcripts and extract timestamped action items.</li>
+    <li>Implemented speaker-turn sliding window chunking and hybrid retrieval combining BM25 sparse lexical search with dense vector similarity over a Pinecone vector index.</li>
+    <li>Integrated cross-encoder re-ranking to prune retrieval noise, cutting context token overhead by 42% and lifting factual answer relevancy to >94% on semantic question-answering benchmarks.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <span>BidBlitz — High-Concurrency Auction Engine</span>
+    <span>Feb'25 – April'25</span>
+  </div>
+  <div class="entry-sub">Node.js, Express.js, PostgreSQL, JWT, bcrypt</div>
+  <ul>
+    <li>Architected a high-concurrency auction engine using Node.js, Express, and PostgreSQL, enabling sub-200ms bid updates and supporting 1,000+ concurrent simulated requests.</li>
+    <li>Engineered a secure authentication pipeline with JWT and bcrypt salted hashing, mitigating unauthorized access and reducing session vulnerability by 100%.</li>
+    <li>Designed a normalized relational database schema with optimized indexing and foreign key constraints, reducing average query retrieval time by 35%.</li>
+  </ul>
+</div>
+
+<h2>Technical Skills</h2>
+<div class="skills-category"><strong>Languages:</strong> Python, JavaScript, TypeScript, C, C++, HTML5/CSS3, SQL</div>
+<div class="skills-category"><strong>Frameworks & Technologies:</strong> Next.js, React.js, Node.js, Express.js, Flask, FastAPI, Tailwind CSS, REST APIs, FaceNet, MTCNN, OpenCV, LangGraph, Kafka, OpenSearch, Neo4j, Docker, JWT Authentication</div>
+<div class="skills-category"><strong>Databases & Developer Tools:</strong> MongoDB, Mongoose, PostgreSQL, MySQL, Pinecone (Vector DB), Cloudinary, Git, GitHub, GitHub Copilot, Postman, VS Code, Jupyter Lab, Poetry</div>
+<div class="skills-category"><strong>Relevant Coursework:</strong> Data Structures & Algorithms, Operating Systems, OOP, DBMS, Computer Architecture, Discrete Mathematics, Digital Systems, Linear Algebra, Probability Theory</div>
+
+<h2>Achievements</h2>
+<ul>
+  <li>Secured an <strong>All India Rank of 1883 in JEE Mains 2023</strong> out of more than 1 million candidates nationwide (Top 0.18%).</li>
+  <li>Achieved an <strong>All India Rank of 2616 in JEE Advanced 2023</strong> among top aspirants nationwide.</li>
+</ul>
+
+<h2>Leadership & Extracurricular Activities</h2>
+<div class="entry">
+  <div class="entry-header">
+    <span>Yoga Club, NITK — Co-Convener</span>
+    <span>Feb'24 – Feb'26</span>
+  </div>
+  <ul>
+    <li>Oversaw planning and execution of club events and workshops, and managed engagement for 150+ active members.</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="entry-header">
+    <span>SPICMACAY, NITK Chapter — Event Planner and Publicity Coordinator</span>
+    <span>March'24 – Present</span>
+  </div>
+  <ul>
+    <li>Promoted awareness and appreciation of India's rich cultural heritage through diverse performances and workshops.</li>
+  </ul>
+</div>
+
+</body>
+</html>
