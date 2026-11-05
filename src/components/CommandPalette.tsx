@@ -35,22 +35,9 @@ export default function CommandPalette({
   onOpenResume,
 }: CommandPaletteProps) {
   const [query, setQuery] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const { theme, toggleTheme } = useTheme();
   const { personal } = resumeData;
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        if (isOpen) onClose();
-      }
-      if (e.key === "Escape" && isOpen) {
-        onClose();
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personal.email);
@@ -102,6 +89,42 @@ export default function CommandPalette({
       },
     },
     {
+      label: "Jump to Contact Hub & Direct Outreach",
+      category: "Navigation",
+      hint: "05 Contact",
+      action: () => {
+        window.location.hash = "#contact";
+        onClose();
+      },
+    },
+    {
+      label: "Launch TraceID Live Demo (Facial Vector Matching)",
+      category: "Project Demo",
+      hint: "New Tab",
+      action: () => {
+        window.open("https://girish1101.github.io/TraceID/", "_blank");
+        onClose();
+      },
+    },
+    {
+      label: "Launch Meetlnk Live Demo (Meeting Intelligence & RAG)",
+      category: "Project Demo",
+      hint: "New Tab",
+      action: () => {
+        window.open("https://girish1101.github.io/Meetlnk/", "_blank");
+        onClose();
+      },
+    },
+    {
+      label: "Launch BidBlitz Live Demo (Real-Time Auction Engine)",
+      category: "Project Demo",
+      hint: "New Tab",
+      action: () => {
+        window.open("https://dbms-taupe-iota.vercel.app/", "_blank");
+        onClose();
+      },
+    },
+    {
       label: "View & Download Official Resume PDF",
       category: "Resume",
       hint: "Modal Viewer",
@@ -142,11 +165,54 @@ export default function CommandPalette({
     },
   ];
 
-  const filteredCommands = commands.filter(
-    (c) =>
-      c.label.toLowerCase().includes(query.toLowerCase()) ||
-      c.category.toLowerCase().includes(query.toLowerCase())
+  const filteredItems =
+    query.trim() === ""
+      ? commands
+      : commands.filter(
+          (c) =>
+            c.label.toLowerCase().includes(query.trim().toLowerCase()) ||
+            c.category.toLowerCase().includes(query.trim().toLowerCase())
+        );
+
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [query]);
+
+  const executeAction = React.useCallback(
+    (index: number) => {
+      const target = filteredItems[index];
+      if (target) {
+        target.action();
+      }
+    },
+    [filteredItems]
   );
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        if (isOpen) onClose();
+      }
+      if (!isOpen) return;
+
+      if (e.key === "Escape") {
+        e.preventDefault();
+        onClose();
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setSelectedIndex((prev) => (prev + 1) % (filteredItems.length || 1));
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setSelectedIndex((prev) => (prev - 1 + filteredItems.length) % (filteredItems.length || 1));
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        executeAction(selectedIndex);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose, executeAction, filteredItems.length, selectedIndex]);
 
   return (
     <AnimatePresence>
@@ -185,7 +251,7 @@ export default function CommandPalette({
             </kbd>
             <button
               onClick={onClose}
-              className="text-text-muted hover:text-text-primary p-1 rounded hover:bg-subtle"
+              className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-text-muted hover:text-text-primary p-1 rounded hover:bg-subtle"
               aria-label="Close command palette"
             >
               <X className="w-4 h-4" />
@@ -194,26 +260,31 @@ export default function CommandPalette({
 
           {/* Action List */}
           <div className="max-h-72 overflow-y-auto p-2 space-y-1">
-            {filteredCommands.map((item, idx) => (
+            {filteredItems.map((item, idx) => (
               <button
                 key={idx}
                 onClick={item.action}
-                className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-left text-text-secondary hover:text-text-primary hover:bg-subtle transition-colors group"
+                onMouseEnter={() => setSelectedIndex(idx)}
+                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-left transition-colors group ${
+                  idx === selectedIndex
+                    ? "bg-accent/10 text-text-bright ring-1 ring-accent/40"
+                    : "text-text-secondary hover:text-text-bright hover:bg-subtle/70"
+                }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="text-[10px] uppercase px-1.5 py-0.5 rounded bg-badge text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                  <span className="text-[10px] uppercase px-1.5 py-0.5 rounded bg-badge text-accent border border-accent/20 group-hover:bg-accent/20 group-hover:text-accent transition-colors">
                     {item.category}
                   </span>
-                  <span className="font-medium text-text-primary">{item.label}</span>
+                  <span className="font-medium text-text-primary group-hover:text-text-bright">{item.label}</span>
                 </div>
                 <div className="flex items-center gap-2 text-text-muted">
                   <span className="text-[10px] hidden sm:inline">{item.hint}</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 text-accent group-hover:translate-x-0.5 transition-transform" />
                 </div>
               </button>
             ))}
 
-            {filteredCommands.length === 0 && (
+            {filteredItems.length === 0 && (
               <div className="py-8 text-center text-text-muted">
                 No commands matching &ldquo;{query}&rdquo;
               </div>

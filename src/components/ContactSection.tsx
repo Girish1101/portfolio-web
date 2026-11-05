@@ -6,15 +6,12 @@ import {
   Mail,
   Copy,
   Check,
-  Send,
   Github,
   Linkedin,
-  MapPin,
   Clock,
-  Phone,
   Eye,
   ArrowUp,
-  Terminal,
+  ArrowUpRight,
 } from "lucide-react";
 import { toast } from "sonner";
 import { resumeData } from "@/data/resume";
@@ -25,8 +22,6 @@ export default function ContactSection() {
   const [copied, setCopied] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
 
   // Live Surathkal, India local time
   useEffect(() => {
@@ -56,23 +51,6 @@ export default function ContactSection() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      toast.error("Please fill in all required fields.");
-      return;
-    }
-
-    setSubmitted(true);
-    toast.success("Message prepared! Opening default mail client...");
-
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name}`);
-    const body = encodeURIComponent(
-      `${formData.message}\n\n---\nFrom: ${formData.name}\nEmail: ${formData.email}`
-    );
-    window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`;
-  };
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -87,10 +65,10 @@ export default function ContactSection() {
           </span>
           <span className="h-px w-8 bg-border-strong" />
           <span className="font-mono text-xs text-text-muted">
-            Direct Dialogue
+            Get in Touch
           </span>
         </div>
-        <h2 className="font-serif text-3xl sm:text-5xl text-text-primary tracking-tight font-normal">
+        <h2 className="font-sans font-bold font-fluid-section text-text-bright tracking-tight">
           Have a system that&apos;s hard to debug or messy data? Let&apos;s talk.
         </h2>
         <p className="text-text-secondary text-sm sm:text-base max-w-2xl mt-3 leading-relaxed">
@@ -99,7 +77,7 @@ export default function ContactSection() {
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
-        {/* Left Column: Direct Communication Hub (5 cols) */}
+        {/* Left Column: Direct Channels (5 cols) */}
         <motion.div {...sectionReveal} className="lg:col-span-5 space-y-6">
           <div className="editorial-card rounded-2xl p-6 border border-border-subtle space-y-6">
             <span className="font-mono text-xs uppercase tracking-wider text-text-primary font-bold">
@@ -112,7 +90,7 @@ export default function ContactSection() {
                 <span className="font-mono text-[11px] text-text-muted uppercase">Email Address</span>
                 <button
                   onClick={handleCopyEmail}
-                  className="inline-flex items-center gap-1 font-mono text-xs text-accent hover:underline"
+                  className="btn-brittany min-h-[44px] inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-accent/60 text-accent bg-transparent hover:bg-accent/10 hover:-translate-y-0.5 hover:shadow-[2px_2px_0_0_#64ffda] focus-visible:outline-dashed focus-visible:outline-accent font-mono text-xs transition-all duration-200"
                 >
                   {copied ? <Check className="w-3.5 h-3.5 text-accent" /> : <Copy className="w-3.5 h-3.5" />}
                   <span>{copied ? "Copied" : "Copy"}</span>
@@ -123,14 +101,14 @@ export default function ContactSection() {
               </div>
             </div>
 
-            {/* Phone (Click to reveal for privacy) */}
+            {/* Phone — click to reveal */}
             <div className="p-4 rounded-xl bg-subtle/60 border border-border-subtle space-y-2">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-[11px] text-text-muted uppercase">Phone / WhatsApp</span>
                 {!showPhone ? (
                   <button
                     onClick={() => setShowPhone(true)}
-                    className="inline-flex items-center gap-1 font-mono text-xs text-accent hover:underline"
+                    className="min-h-[44px] inline-flex items-center gap-1 font-mono text-xs text-accent hover:underline px-2.5 py-2"
                   >
                     <Eye className="w-3.5 h-3.5" />
                     <span>Click to reveal</span>
@@ -144,7 +122,7 @@ export default function ContactSection() {
               </div>
             </div>
 
-            {/* Location & Local Time */}
+            {/* Location & Live IST Clock */}
             <div className="p-4 rounded-xl bg-subtle/60 border border-border-subtle space-y-2">
               <span className="font-mono text-[11px] text-text-muted uppercase">Location &amp; Local Time</span>
               <div className="font-mono text-xs sm:text-sm text-text-primary">
@@ -162,7 +140,7 @@ export default function ContactSection() {
                 href={personal.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border-subtle bg-surface hover:bg-subtle text-text-primary transition-colors"
+                className="min-h-[44px] inline-flex items-center gap-1.5 px-3 py-2 rounded-md border border-border-subtle bg-surface hover:bg-subtle hover:border-accent hover:text-accent text-text-primary transition-colors"
               >
                 <Github className="w-3.5 h-3.5" />
                 <span>GitHub</span>
@@ -171,7 +149,7 @@ export default function ContactSection() {
                 href={personal.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border-subtle bg-surface hover:bg-subtle text-text-primary transition-colors"
+                className="min-h-[44px] inline-flex items-center gap-1.5 px-3 py-2 rounded-md border border-border-subtle bg-surface hover:bg-subtle hover:border-accent hover:text-accent text-text-primary transition-colors"
               >
                 <Linkedin className="w-3.5 h-3.5" />
                 <span>LinkedIn</span>
@@ -180,71 +158,48 @@ export default function ContactSection() {
           </div>
         </motion.div>
 
-        {/* Right Column: Direct Message Form (7 cols) */}
+        {/* Right Column: Call to Action (7 cols) */}
         <motion.div {...sectionReveal} className="lg:col-span-7">
-          <form
-            onSubmit={handleSubmit}
-            className="editorial-card rounded-2xl p-6 sm:p-8 border border-border-subtle space-y-5"
-          >
-            <span className="font-mono text-xs uppercase tracking-wider text-text-primary font-bold">
-              Dispatch a Message
-            </span>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-1.5 font-mono text-xs">
-                <label htmlFor="name" className="text-text-muted">
-                  Your Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Ada Lovelace"
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-border-strong text-text-primary placeholder-text-muted focus:outline-none focus:border-accent transition-colors"
-                />
-              </div>
-
-              <div className="space-y-1.5 font-mono text-xs">
-                <label htmlFor="email" className="text-text-muted">
-                  Your Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="ada@example.com"
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-border-strong text-text-primary placeholder-text-muted focus:outline-none focus:border-accent transition-colors"
-                />
-              </div>
+          <div className="editorial-card rounded-2xl p-8 sm:p-10 border border-border-subtle space-y-8 flex flex-col justify-between min-h-[320px]">
+            <div className="space-y-4">
+              <span className="font-mono text-xs uppercase tracking-wider text-text-primary font-bold">
+                Start a Conversation
+              </span>
+              <p className="text-text-secondary text-sm sm:text-base leading-relaxed max-w-lg">
+                Whether you have an engineering challenge, an open role, or just want to discuss
+                distributed systems and AI — my inbox is open. I respond to every serious message.
+              </p>
+              <ul className="space-y-2 text-xs font-mono text-text-muted">
+                <li className="flex items-center gap-2">
+                  <span className="text-accent">→</span> SDE internship or full-time roles
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-accent">→</span> AI / LLM systems, RAG pipelines, multi-agent orchestration
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-accent">→</span> Distributed backend architecture discussions
+                </li>
+              </ul>
             </div>
 
-            <div className="space-y-1.5 font-mono text-xs">
-              <label htmlFor="message" className="text-text-muted">
-                System Context / Opportunity Details
-              </label>
-              <textarea
-                id="message"
-                required
-                rows={4}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Tell me about your distributed architecture, RAG pipeline requirements, or open engineering roles..."
-                className="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-border-strong text-text-primary placeholder-text-muted focus:outline-none focus:border-accent transition-colors resize-y"
-              />
+            <div className="flex flex-wrap gap-3 pt-4 border-t border-border-subtle">
+              <a
+                href={`mailto:${personal.email}?subject=Reaching out from your portfolio`}
+                className="btn-brittany min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-md border border-accent text-accent bg-transparent hover:bg-accent/10 hover:-translate-y-1 hover:shadow-[3px_3px_0_0_#64ffda] focus-visible:outline-dashed focus-visible:outline-accent font-mono text-xs sm:text-sm font-medium transition-all duration-200"
+              >
+                <Mail className="w-4 h-4 text-accent" />
+                <span>Email Me Directly</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-accent" />
+              </a>
+              <button
+                onClick={handleCopyEmail}
+                className="min-h-[44px] inline-flex items-center gap-2 px-5 py-3 rounded-md border border-border-subtle bg-surface hover:border-accent hover:text-accent hover:bg-accent/5 text-text-secondary font-mono text-xs font-medium transition-all duration-200"
+              >
+                {copied ? <Check className="w-4 h-4 text-accent" /> : <Copy className="w-4 h-4" />}
+                <span>{copied ? "Copied!" : "Copy Email"}</span>
+              </button>
             </div>
-
-            <button
-              type="submit"
-              className="w-full py-3 rounded-md bg-accent hover:bg-accent-hover text-white font-mono text-xs sm:text-sm font-medium transition-colors flex items-center justify-center gap-2 shadow-xs"
-            >
-              <Send className="w-4 h-4" />
-              <span>Send Message</span>
-            </button>
-          </form>
+          </div>
         </motion.div>
       </div>
 
@@ -253,12 +208,11 @@ export default function ContactSection() {
         <div>
           <span>&copy; {new Date().getFullYear()} Girish Sharma &bull; NIT Karnataka</span>
         </div>
-
         <div className="flex items-center gap-6">
-          <span>Crafted with Next.js 14 &amp; Motion</span>
+          <span>Built with Next.js &amp; Tailwind CSS</span>
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1 text-text-primary hover:text-accent transition-colors"
+            className="min-h-[44px] inline-flex items-center gap-1 text-text-primary hover:text-accent transition-colors px-2"
             aria-label="Scroll to top of page"
           >
             <span>Top</span>

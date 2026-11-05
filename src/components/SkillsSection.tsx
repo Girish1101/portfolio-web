@@ -55,18 +55,18 @@ export default function SkillsSection() {
           <div>
             <div className="flex items-center gap-3 mb-2">
               <span className="font-mono text-xs text-accent uppercase tracking-widest font-semibold">
-                03 / TECHNICAL ARSENAL
+                04 / SKILLS
               </span>
               <span className="h-px w-8 bg-border-strong" />
               <span className="font-mono text-xs text-text-muted">
-                Grouped by Shipped Production Code
+                Grouped by shipped project
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl text-text-primary tracking-tight font-normal">
-              Skills &amp; Engineering Stack
+            <h2 className="font-sans font-bold font-fluid-section text-text-bright tracking-tight">
+              Technical Stack
             </h2>
             <p className="text-text-secondary text-sm sm:text-base max-w-2xl mt-3 leading-relaxed">
-              Every skill below is tied to real production deliverables &mdash; no unverified claims or fake percentage meters.
+              Every technology below was used in a shipped project or production environment. Domain groupings link each skill to its context.
             </p>
           </div>
 
@@ -84,20 +84,23 @@ export default function SkillsSection() {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-1.5 pt-6 mt-4 border-t border-border-subtle font-mono text-xs">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-3 py-1.5 rounded-md transition-colors ${
-                activeCategory === cat
-                  ? "bg-accent text-white font-medium"
-                  : "bg-surface text-text-secondary hover:text-text-primary border border-border-subtle"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        <div className="flex flex-wrap gap-2 pt-6 mt-4 border-t border-border-subtle font-mono text-xs">
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-md font-mono text-xs transition-all duration-200 ${
+                  isActive
+                    ? "border border-accent text-accent bg-accent/10 shadow-[0_0_10px_rgba(100,255,218,0.2)] font-medium"
+                    : "border border-border-subtle bg-surface text-text-secondary hover:border-accent hover:text-accent hover:bg-accent/5"
+                }`}
+              >
+                {cat}
+              </button>
+            );
+          })}
         </div>
       </motion.div>
 
@@ -111,7 +114,7 @@ export default function SkillsSection() {
           >
             <div>
               <div className="flex items-center justify-between">
-                <h3 className="font-serif text-xl font-medium text-text-primary">
+                <h3 className="font-sans font-bold text-xl text-text-bright">
                   {group.category}
                 </h3>
                 <span className="font-mono text-[10px] text-text-muted">
@@ -143,10 +146,10 @@ export default function SkillsSection() {
                   {skill.projectContext && (
                     <a
                       href="#work"
-                      className="inline-flex items-center gap-1 font-mono text-[10px] text-accent hover:underline shrink-0"
+                      className="min-h-[44px] inline-flex items-center gap-1 font-mono text-[11px] sm:text-[10px] text-accent hover:underline shrink-0 px-2 py-1"
                     >
                       <span>Used in {skill.projectContext}</span>
-                      <ArrowUpRight className="w-2.5 h-2.5" />
+                      <ArrowUpRight className="w-3 h-3" />
                     </a>
                   )}
                 </div>
@@ -163,7 +166,7 @@ export default function SkillsSection() {
           >
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-serif text-xl font-medium text-text-primary flex items-center gap-2">
+                <h3 className="font-sans font-bold text-xl text-text-bright flex items-center gap-2">
                   <BookOpen className="w-4 h-4 text-accent" />
                   Core CS Foundations (NITK Curriculum)
                 </h3>
@@ -187,6 +190,14 @@ export default function SkillsSection() {
               ))}
             </div>
           </motion.div>
+        )}
+
+        {/* Empty state fallback */}
+        {filteredGroups.length === 0 && !showCoreCS && (
+          <div className="md:col-span-2 p-12 text-center rounded-xl border border-border-subtle bg-surface text-text-muted font-mono text-xs space-y-2">
+            <p className="font-semibold text-text-primary text-sm">No skills found</p>
+            <p>No skills match your filter &ldquo;{searchQuery}&rdquo;. Try another term or reset the category filter.</p>
+          </div>
         )}
       </div>
 

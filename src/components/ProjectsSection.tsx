@@ -35,19 +35,19 @@ export default function ProjectsSection() {
       <motion.div {...sectionReveal} className="border-b border-border-subtle pb-8 mb-16">
         <div className="flex items-center gap-3 mb-2">
           <span className="font-mono text-xs text-accent uppercase tracking-widest font-semibold">
-            01 / SELECTED WORK
+            03 / PROJECTS
           </span>
           <span className="h-px w-8 bg-border-strong" />
           <span className="font-mono text-xs text-text-muted">
-            4 Production Architectures
+            4 Engineering Case Studies
           </span>
         </div>
-        <h2 className="font-serif text-3xl sm:text-5xl text-text-primary tracking-tight font-normal">
-          Flagship Engineering Case Studies
+        <h2 className="font-sans font-bold font-fluid-section text-text-bright tracking-tight">
+          Flagship Engineering Projects
         </h2>
         <p className="text-text-secondary text-sm sm:text-base max-w-2xl mt-3 leading-relaxed">
-          Autonomous multi-agent RCA pipelines, hybrid retrieval for conversation intelligence,
-          vector similarity facial landmarking, and high-concurrency transactional locking.
+          Multi-agent RCA pipelines, hybrid retrieval for meeting intelligence,
+          vector-similarity facial matching, and high-concurrency auction systems.
         </p>
       </motion.div>
 
@@ -57,7 +57,7 @@ export default function ProjectsSection() {
         {/* CASE STUDY 01: TECH MAHINDRA (Wide Full-Bleed Blueprint Layout) */}
         {/* ========================================================================= */}
         {(() => {
-          const p = projects[0];
+          const p = projects.find((item) => item.id === "tech-mahindra-rca") || projects[0];
           return (
             <motion.article
               key={p.id}
@@ -78,10 +78,10 @@ export default function ProjectsSection() {
 
               {/* Title & Pitch */}
               <div className="space-y-3 mb-8">
-                <h3 className="font-serif text-2xl sm:text-4xl text-text-primary">
+                <h3 className="font-sans font-bold text-2xl sm:text-4xl text-text-bright hover:text-accent transition-colors">
                   {p.title}
                 </h3>
-                <p className="text-accent font-serif italic text-lg sm:text-xl">
+                <p className="text-accent font-sans font-medium text-lg sm:text-xl">
                   {p.tagline}
                 </p>
               </div>
@@ -204,7 +204,7 @@ export default function ProjectsSection() {
 
                 <button
                   onClick={() => handleOpenModal(p)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-surface text-text-primary hover:bg-subtle border border-border-strong text-xs font-mono transition-colors"
+                  className="btn-brittany min-h-[44px] inline-flex items-center gap-2 px-4 py-2 rounded-md border border-accent text-accent bg-transparent hover:bg-accent/10 hover:-translate-y-1 hover:shadow-[3px_3px_0_0_#64ffda] focus-visible:outline-dashed focus-visible:outline-accent font-mono text-xs font-medium transition-all duration-200"
                 >
                   <Cpu className="w-3.5 h-3.5 text-accent" />
                   <span>Inspect Architecture Spec</span>
@@ -215,10 +215,196 @@ export default function ProjectsSection() {
         })()}
 
         {/* ========================================================================= */}
-        {/* CASE STUDY 02: MEETLNK (Editorial Split Layout: Left Content, Right Graphic) */}
+        {/* CASE STUDY 02: TRACEID (Inverted Split Layout: Left Visual, Right Content) */}
         {/* ========================================================================= */}
         {(() => {
-          const p = projects[1];
+          const p = projects.find((item) => item.id === "traceid") || projects[1];
+          return (
+            <motion.article
+              key={p.id}
+              {...sectionReveal}
+              className="editorial-card rounded-2xl p-6 sm:p-10 border border-border-subtle"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                {/* Left 6 cols: Vector Pipeline & Mathematical Guarantee */}
+                <div className="lg:col-span-6 space-y-4 order-2 lg:order-1">
+                  <TiltFrame maxAngle={6}>
+                    <div className="rounded-xl border border-border-subtle bg-subtle/50 p-6 space-y-4 shadow-xs">
+                      <div className="flex items-center justify-between border-b border-border-subtle pb-3">
+                        <span className="font-mono text-xs text-text-primary font-semibold flex items-center gap-1.5">
+                          <Activity className="w-4 h-4 text-accent" />
+                          512-Dim Vector Indexing &amp; Alignment
+                        </span>
+                        <span className="font-mono text-[10px] text-accent">&lt;120ms Latency</span>
+                      </div>
+
+                      {/* Inline SVG Pipeline Diagram for TraceID */}
+                      <svg
+                        viewBox="0 0 540 120"
+                        className="w-full h-auto text-text-primary"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        {/* Step 1: Field Photograph */}
+                        <rect x="5" y="32" width="95" height="56" rx="6" className="fill-surface stroke-border-strong" strokeWidth="1.2" />
+                        <text x="52" y="56" textAnchor="middle" className="fill-text-primary text-[8.5px] font-mono font-medium">Field Photograph</text>
+                        <text x="52" y="70" textAnchor="middle" className="fill-text-muted text-[7px] font-mono">Multi-Person Noise</text>
+
+                        {/* Arrow 1 */}
+                        <path d="M100 60 H125" stroke="var(--accent)" strokeWidth="1.5" />
+                        <polygon points="125,60 119,56 119,64" fill="var(--accent)" />
+
+                        {/* Step 2: MTCNN Alignment */}
+                        <rect x="125" y="32" width="105" height="56" rx="6" className="fill-surface stroke-border-strong" strokeWidth="1.2" />
+                        <text x="177" y="56" textAnchor="middle" className="fill-text-primary text-[8.5px] font-mono font-medium">MTCNN Alignment</text>
+                        <text x="177" y="70" textAnchor="middle" className="fill-text-muted text-[7px] font-mono">5-Point Yaw/Pitch Matrix</text>
+
+                        {/* Arrow 2 */}
+                        <path d="M230 60 H255" stroke="var(--accent)" strokeWidth="1.5" />
+                        <polygon points="255,60 249,56 249,64" fill="var(--accent)" />
+
+                        {/* Step 3: FaceNet Embeddings */}
+                        <rect x="255" y="32" width="115" height="56" rx="6" className="fill-surface stroke-accent" strokeWidth="1.5" />
+                        <text x="312" y="56" textAnchor="middle" className="fill-accent text-[9px] font-mono font-bold">FaceNet 512-dim</text>
+                        <text x="312" y="70" textAnchor="middle" className="fill-text-primary text-[7px] font-mono">Inception-ResNet-v1</text>
+
+                        {/* Arrow 3 */}
+                        <path d="M370 60 H395" stroke="var(--accent)" strokeWidth="1.5" />
+                        <polygon points="395,60 389,56 389,64" fill="var(--accent)" />
+
+                        {/* Step 4: L2 Norm & PostgreSQL */}
+                        <rect x="395" y="32" width="140" height="56" rx="6" className="fill-surface stroke-border-strong" strokeWidth="1.2" />
+                        <text x="465" y="56" textAnchor="middle" className="fill-text-primary text-[8.5px] font-mono font-medium">L2 Norm &bull; PostgreSQL</text>
+                        <text x="465" y="70" textAnchor="middle" className="fill-accent text-[7.5px] font-mono">&lt;120ms Inverted Index</text>
+                      </svg>
+
+                      {/* Summary Cards */}
+                      <div className="space-y-2.5 font-mono text-xs">
+                        <div className="p-2.5 rounded-lg bg-surface border border-border-subtle">
+                          <div className="text-text-muted text-[10px] uppercase">Landmarking &bull; Alignment</div>
+                          <div className="font-semibold text-text-primary mt-0.5">MTCNN Multi-Box Face Alignment</div>
+                          <div className="text-[11px] text-text-secondary mt-0.5">Extracts affine landmark matrix to cancel facial yaw/pitch variance.</div>
+                        </div>
+
+                        <div className="p-2.5 rounded-lg bg-surface border border-accent/40 bg-accent-subtle/20">
+                          <div className="text-accent text-[10px] uppercase font-bold">Vector Optimization &bull; &gt;96% Accuracy</div>
+                          <div className="font-semibold text-text-primary mt-0.5">FaceNet 512-d &rarr; L2-Normalized Inner Product</div>
+                          <div className="text-[11px] text-text-secondary mt-0.5">Converts cosine distance into fast Euclidean dot products in Neon PostgreSQL.</div>
+                        </div>
+                      </div>
+
+                      {/* Ethics note */}
+                      {p.architecture.ethicsNote && (
+                        <div className="p-3 rounded-lg bg-surface border border-border-subtle text-[11px] text-text-muted font-sans flex items-start gap-2">
+                          <Shield className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
+                          <span>{p.architecture.ethicsNote}</span>
+                        </div>
+                      )}
+                    </div>
+                  </TiltFrame>
+
+                  <div className="flex flex-wrap gap-2">
+                    {p.technologies.map((t) => (
+                      <a
+                        key={t}
+                        href="#skills"
+                        className="px-2.5 py-1 rounded bg-badge text-[11px] font-mono text-text-secondary border border-border-subtle hover:border-accent hover:text-accent transition-colors"
+                      >
+                        {t}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right 6 cols: Context & Problem */}
+                <div className="lg:col-span-6 space-y-6 order-1 lg:order-2">
+                  <div className="flex items-center gap-2 text-xs font-mono">
+                    <span className="px-2 py-0.5 rounded bg-badge text-accent font-semibold">
+                      PROJECT 02
+                    </span>
+                    <span className="text-text-muted">&bull;</span>
+                    <span className="text-text-secondary">{p.category}</span>
+                  </div>
+
+                  <div>
+                    <h3 className="font-sans font-bold text-2xl sm:text-4xl text-text-bright hover:text-accent transition-colors">
+                      {p.title}
+                    </h3>
+                    <p className="text-accent font-sans font-medium text-lg sm:text-xl mt-1">
+                      {p.tagline}
+                    </p>
+                  </div>
+
+                  <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
+                    {p.architecture.problem}
+                  </p>
+
+                  <div className="space-y-2 text-xs sm:text-sm text-text-secondary">
+                    {p.bulletPoints.map((bp, i) => (
+                      <div key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                        <span>{bp}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-3 pt-2">
+                    {p.metrics.map((m, i) => (
+                      <div key={i} className="p-3 rounded-lg bg-surface border border-border-subtle">
+                        <div className="font-mono text-sm sm:text-base font-bold text-accent">
+                          {m.value}
+                        </div>
+                        <div className="text-[10px] text-text-muted leading-tight mt-1">
+                          {m.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border-subtle">
+                    {p.liveUrl && (
+                      <a
+                        href={p.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-brittany min-h-[44px] min-w-[44px] inline-flex items-center justify-center p-2.5 rounded-md border border-accent text-accent bg-transparent hover:bg-accent/10 hover:-translate-y-1 hover:shadow-[3px_3px_0_0_#64ffda] focus-visible:outline-dashed focus-visible:outline-accent transition-all duration-200"
+                        title="Live Demo"
+                        aria-label={`${p.title} Live Demo`}
+                      >
+                        <ExternalLink className="w-4 h-4 text-accent" />
+                      </a>
+                    )}
+                    {p.githubUrl && (
+                      <a
+                        href={p.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center p-2.5 rounded-md bg-surface text-text-primary hover:border-accent hover:text-accent hover:bg-accent/5 border border-border-subtle transition-all duration-200 hover:-translate-y-0.5"
+                        title="GitHub Repository"
+                        aria-label={`${p.title} GitHub Repository`}
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
+                    )}
+                    <button
+                      onClick={() => handleOpenModal(p)}
+                      className="btn-brittany min-h-[44px] inline-flex items-center gap-1.5 px-3.5 py-2 rounded-md border border-accent text-accent bg-transparent hover:bg-accent/10 hover:-translate-y-1 hover:shadow-[3px_3px_0_0_#64ffda] focus-visible:outline-dashed focus-visible:outline-accent text-xs font-mono font-medium transition-all duration-200"
+                    >
+                      <Cpu className="w-3.5 h-3.5 text-accent" />
+                      <span>Inspect Microservices</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          );
+        })()}
+
+        {/* ========================================================================= */}
+        {/* CASE STUDY 03: MEETLNK (Editorial Split Layout: Left Content, Right Graphic) */}
+        {/* ========================================================================= */}
+        {(() => {
+          const p = projects.find((item) => item.id === "meetlnk") || projects[2];
           return (
             <motion.article
               key={p.id}
@@ -230,17 +416,17 @@ export default function ProjectsSection() {
                 <div className="lg:col-span-6 space-y-6">
                   <div className="flex items-center gap-2 text-xs font-mono">
                     <span className="px-2 py-0.5 rounded bg-badge text-accent font-semibold">
-                      PROJECT 02
+                      PROJECT 03
                     </span>
                     <span className="text-text-muted">&bull;</span>
                     <span className="text-text-secondary">{p.category}</span>
                   </div>
 
                   <div>
-                    <h3 className="font-serif text-2xl sm:text-4xl text-text-primary">
+                    <h3 className="font-sans font-bold text-2xl sm:text-4xl text-text-bright hover:text-accent transition-colors">
                       {p.title}
                     </h3>
-                    <p className="text-accent font-serif italic text-lg sm:text-xl mt-1">
+                    <p className="text-accent font-sans font-medium text-lg sm:text-xl mt-1">
                       {p.tagline}
                     </p>
                   </div>
@@ -280,10 +466,11 @@ export default function ProjectsSection() {
                         href={p.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-accent text-white hover:bg-accent-hover text-xs font-mono font-medium transition-colors"
+                        className="btn-brittany min-h-[44px] min-w-[44px] inline-flex items-center justify-center p-2.5 rounded-md border border-accent text-accent bg-transparent hover:bg-accent/10 hover:-translate-y-1 hover:shadow-[3px_3px_0_0_#64ffda] focus-visible:outline-dashed focus-visible:outline-accent transition-all duration-200"
+                        title="Live Demo"
+                        aria-label={`${p.title} Live Demo`}
                       >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        <span>Live Demo</span>
+                        <ExternalLink className="w-4 h-4 text-accent" />
                       </a>
                     )}
                     {p.githubUrl && (
@@ -291,15 +478,16 @@ export default function ProjectsSection() {
                         href={p.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-surface text-text-primary hover:bg-subtle border border-border-subtle text-xs font-mono transition-colors"
+                        className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center p-2.5 rounded-md bg-surface text-text-primary hover:border-accent hover:text-accent hover:bg-accent/5 border border-border-subtle transition-all duration-200 hover:-translate-y-0.5"
+                        title="GitHub Repository"
+                        aria-label={`${p.title} GitHub Repository`}
                       >
-                        <Github className="w-3.5 h-3.5" />
-                        <span>Source Code</span>
+                        <Github className="w-4 h-4" />
                       </a>
                     )}
                     <button
                       onClick={() => handleOpenModal(p)}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-surface text-text-primary hover:bg-subtle border border-border-strong text-xs font-mono transition-colors"
+                      className="btn-brittany min-h-[44px] inline-flex items-center gap-1.5 px-3.5 py-2 rounded-md border border-accent text-accent bg-transparent hover:bg-accent/10 hover:-translate-y-1 hover:shadow-[3px_3px_0_0_#64ffda] focus-visible:outline-dashed focus-visible:outline-accent text-xs font-mono font-medium transition-all duration-200"
                     >
                       <FileCode2 className="w-3.5 h-3.5 text-accent" />
                       <span>Case Study Spec</span>
@@ -317,192 +505,86 @@ export default function ProjectsSection() {
                           <div className="w-2.5 h-2.5 rounded-full bg-border-strong" />
                           <div className="w-2.5 h-2.5 rounded-full bg-border-strong" />
                           <div className="w-2.5 h-2.5 rounded-full bg-border-strong" />
-                          <span className="ml-2 font-mono text-[10px] text-text-muted">meetlnk.internal/eval</span>
+                          <span className="ml-2 font-mono text-[10px] text-text-muted">meetlnk.internal/pipeline</span>
                         </div>
                         <span className="font-mono text-[10px] text-accent font-semibold">Token Cut: 42%</span>
                       </div>
 
-                      {/* Architectural Steps */}
-                      <div className="space-y-3 font-mono text-xs">
-                        <div className="p-3 rounded-lg bg-surface border border-border-subtle">
+                      {/* Inline SVG Pipeline Diagram */}
+                      <svg
+                        viewBox="0 0 540 125"
+                        className="w-full h-auto text-text-primary"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        {/* Audio Ingest */}
+                        <rect x="5" y="35" width="85" height="55" rx="6" className="fill-surface stroke-border-strong" strokeWidth="1.2" />
+                        <text x="47" y="58" textAnchor="middle" className="fill-text-primary text-[9px] font-mono font-medium">Meeting Audio</text>
+                        <text x="47" y="73" textAnchor="middle" className="fill-text-muted text-[7.5px] font-mono">Sliding Windows</text>
+
+                        {/* Arrow to Dual Retrieval */}
+                        <path d="M90 62 H115" stroke="var(--accent)" strokeWidth="1.5" />
+
+                        {/* Dual Branch: BM25 Lexical */}
+                        <path d="M115 62 V30 H130" stroke="var(--accent)" strokeWidth="1.2" />
+                        <rect x="130" y="10" width="115" height="38" rx="6" className="fill-surface stroke-border-strong" strokeWidth="1.2" />
+                        <text x="187" y="26" textAnchor="middle" className="fill-text-primary text-[8.5px] font-mono font-medium">BM25 Lexical</text>
+                        <text x="187" y="38" textAnchor="middle" className="fill-text-muted text-[7px] font-mono">Exact Acronym Recall</text>
+
+                        {/* Dual Branch: Pinecone Dense */}
+                        <path d="M115 62 V95 H130" stroke="var(--accent)" strokeWidth="1.2" />
+                        <rect x="130" y="75" width="115" height="38" rx="6" className="fill-surface stroke-border-strong" strokeWidth="1.2" />
+                        <text x="187" y="91" textAnchor="middle" className="fill-accent text-[8.5px] font-mono font-medium">Pinecone Dense</text>
+                        <text x="187" y="103" textAnchor="middle" className="fill-text-muted text-[7px] font-mono">1536-d Semantic</text>
+
+                        {/* Confluence to Cross-Encoder */}
+                        <path d="M245 29 H265 V62 H280" stroke="var(--accent)" strokeWidth="1.2" />
+                        <path d="M245 94 H265 V62" stroke="var(--accent)" strokeWidth="1.2" />
+                        <polygon points="280,62 274,58 274,66" fill="var(--accent)" />
+
+                        {/* Cross-Encoder Filter */}
+                        <rect x="280" y="35" width="125" height="55" rx="6" className="fill-surface stroke-accent" strokeWidth="1.5" />
+                        <text x="342" y="58" textAnchor="middle" className="fill-accent text-[9px] font-mono font-bold">Cross-Encoder</text>
+                        <text x="342" y="73" textAnchor="middle" className="fill-text-primary text-[7.5px] font-mono">Rerank: Top-15 &rarr; Top-5</text>
+
+                        {/* Arrow to OpenAI Synthesis */}
+                        <path d="M405 62 H430" stroke="var(--accent)" strokeWidth="1.5" />
+                        <polygon points="430,62 424,58 424,66" fill="var(--accent)" />
+
+                        {/* OpenAI Synthesis */}
+                        <rect x="430" y="35" width="105" height="55" rx="6" className="fill-surface stroke-border-strong" strokeWidth="1.2" />
+                        <text x="482" y="58" textAnchor="middle" className="fill-text-primary text-[8.5px] font-mono font-medium">OpenAI LLM</text>
+                        <text x="482" y="73" textAnchor="middle" className="fill-accent text-[7.5px] font-mono">&gt;94% QA Relevancy</text>
+                      </svg>
+
+                      {/* Architectural Summary Cards */}
+                      <div className="space-y-2.5 font-mono text-xs">
+                        <div className="p-2.5 rounded-lg bg-surface border border-border-subtle">
                           <div className="text-text-muted text-[10px] uppercase">Stage 01: Chunking</div>
                           <div className="font-semibold text-text-primary mt-0.5">Speaker-Turn Sliding Window</div>
-                          <div className="text-[11px] text-text-secondary mt-1">Preserves cross-talk attribution without truncating sentences.</div>
+                          <div className="text-[11px] text-text-secondary mt-0.5">Preserves cross-talk attribution without truncating sentences.</div>
                         </div>
 
-                        <div className="p-3 rounded-lg bg-surface border border-border-subtle">
-                          <div className="text-text-muted text-[10px] uppercase">Stage 02: Hybrid Retrieval</div>
-                          <div className="font-semibold text-text-primary mt-0.5">BM25 Lexical + Pinecone Dense 1536-d</div>
-                          <div className="text-[11px] text-text-secondary mt-1">Recalls exact project acronyms + semantic conceptual matches.</div>
-                        </div>
-
-                        <div className="p-3 rounded-lg bg-surface border border-accent/40 bg-accent-subtle/20">
-                          <div className="text-accent text-[10px] uppercase font-bold">Stage 03: Precision Filter</div>
-                          <div className="font-semibold text-text-primary mt-0.5">Cross-Encoder Joint Attention Re-Ranking</div>
-                          <div className="text-[11px] text-text-secondary mt-1">Prunes noisy context candidates before prompt synthesis (&gt;94% QA relevancy).</div>
+                        <div className="p-2.5 rounded-lg bg-surface border border-accent/40 bg-accent-subtle/20">
+                          <div className="text-accent text-[10px] uppercase font-bold">Stage 02: Hybrid Retrieval &amp; Cross-Encoder</div>
+                          <div className="font-semibold text-text-primary mt-0.5">BM25 + Pinecone &rarr; ms-marco Cross-Encoder</div>
+                          <div className="text-[11px] text-text-secondary mt-0.5">Prunes 42% context token overhead before prompt synthesis.</div>
                         </div>
                       </div>
                     </div>
                   </TiltFrame>
 
-                  {/* Stack pills */}
+                  {/* Stack pills linking to #skills */}
                   <div className="flex flex-wrap gap-2">
                     {p.technologies.map((t) => (
-                      <span
+                      <a
                         key={t}
-                        className="px-2.5 py-1 rounded bg-badge text-[11px] font-mono text-text-secondary border border-border-subtle"
+                        href="#skills"
+                        className="px-2.5 py-1 rounded bg-badge text-[11px] font-mono text-text-secondary border border-border-subtle hover:border-accent hover:text-accent transition-colors"
                       >
                         {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.article>
-          );
-        })()}
-
-        {/* ========================================================================= */}
-        {/* CASE STUDY 03: TRACEID (Inverted Split Layout: Left Visual, Right Content) */}
-        {/* ========================================================================= */}
-        {(() => {
-          const p = projects[2];
-          return (
-            <motion.article
-              key={p.id}
-              {...sectionReveal}
-              className="editorial-card rounded-2xl p-6 sm:p-10 border border-border-subtle"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                {/* Left 6 cols: Vector Pipeline & Mathematical Guarantee */}
-                <div className="lg:col-span-6 space-y-4 order-2 lg:order-1">
-                  <TiltFrame maxAngle={6}>
-                    <div className="rounded-xl border border-border-subtle bg-subtle/50 p-6 space-y-4 shadow-xs">
-                      <div className="flex items-center justify-between border-b border-border-subtle pb-3">
-                        <span className="font-mono text-xs text-text-primary font-semibold flex items-center gap-1.5">
-                          <Activity className="w-4 h-4 text-accent" />
-                          512-Dim Vector Indexing &amp; Alignment
-                        </span>
-                        <span className="font-mono text-[10px] text-accent">&lt;120ms Latency</span>
-                      </div>
-
-                      <div className="space-y-3 font-mono text-xs">
-                        <div className="p-3 rounded-lg bg-surface border border-border-subtle">
-                          <div className="text-text-muted text-[10px] uppercase">Landmarking</div>
-                          <div className="font-semibold text-text-primary mt-0.5">MTCNN Multi-Box Face Alignment</div>
-                          <div className="text-[11px] text-text-secondary mt-1">Extracts affine landmark matrix to cancel facial yaw/pitch variance.</div>
-                        </div>
-
-                        <div className="p-3 rounded-lg bg-surface border border-border-subtle">
-                          <div className="text-text-muted text-[10px] uppercase">Deep Embeddings</div>
-                          <div className="font-semibold text-text-primary mt-0.5">FaceNet 512-Dimensional Output</div>
-                          <div className="text-[11px] text-text-secondary mt-1">Trained on VGGFace2 for compact facial identity representations.</div>
-                        </div>
-
-                        <div className="p-3 rounded-lg bg-surface border border-accent/40 bg-accent-subtle/20">
-                          <div className="text-accent text-[10px] uppercase font-bold">Vector Optimization</div>
-                          <div className="font-semibold text-text-primary mt-0.5">L2-Normalized Inner Product Index</div>
-                          <div className="text-[11px] text-text-secondary mt-1">Converts cosine distance into fast Euclidean dot products in Neon PostgreSQL.</div>
-                        </div>
-                      </div>
-
-                      {/* Ethics note */}
-                      {p.architecture.ethicsNote && (
-                        <div className="p-3 rounded-lg bg-surface border border-border-subtle text-[11px] text-text-muted font-sans flex items-start gap-2">
-                          <Shield className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
-                          <span>{p.architecture.ethicsNote}</span>
-                        </div>
-                      )}
-                    </div>
-                  </TiltFrame>
-
-                  <div className="flex flex-wrap gap-2">
-                    {p.technologies.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2.5 py-1 rounded bg-badge text-[11px] font-mono text-text-secondary border border-border-subtle"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right 6 cols: Context & Problem */}
-                <div className="lg:col-span-6 space-y-6 order-1 lg:order-2">
-                  <div className="flex items-center gap-2 text-xs font-mono">
-                    <span className="px-2 py-0.5 rounded bg-badge text-accent font-semibold">
-                      PROJECT 03
-                    </span>
-                    <span className="text-text-muted">&bull;</span>
-                    <span className="text-text-secondary">{p.category}</span>
-                  </div>
-
-                  <div>
-                    <h3 className="font-serif text-2xl sm:text-4xl text-text-primary">
-                      {p.title}
-                    </h3>
-                    <p className="text-accent font-serif italic text-lg sm:text-xl mt-1">
-                      {p.tagline}
-                    </p>
-                  </div>
-
-                  <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                    {p.architecture.problem}
-                  </p>
-
-                  <div className="space-y-2 text-xs sm:text-sm text-text-secondary">
-                    {p.bulletPoints.map((bp, i) => (
-                      <div key={i} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                        <span>{bp}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-3 pt-2">
-                    {p.metrics.map((m, i) => (
-                      <div key={i} className="p-3 rounded-lg bg-surface border border-border-subtle">
-                        <div className="font-mono text-sm sm:text-base font-bold text-accent">
-                          {m.value}
-                        </div>
-                        <div className="text-[10px] text-text-muted leading-tight mt-1">
-                          {m.label}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border-subtle">
-                    {p.liveUrl && (
-                      <a
-                        href={p.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-accent text-white hover:bg-accent-hover text-xs font-mono font-medium transition-colors"
-                      >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        <span>Live Demo</span>
                       </a>
-                    )}
-                    {p.githubUrl && (
-                      <a
-                        href={p.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-surface text-text-primary hover:bg-subtle border border-border-subtle text-xs font-mono transition-colors"
-                      >
-                        <Github className="w-3.5 h-3.5" />
-                        <span>Source Code</span>
-                      </a>
-                    )}
-                    <button
-                      onClick={() => handleOpenModal(p)}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-surface text-text-primary hover:bg-subtle border border-border-strong text-xs font-mono transition-colors"
-                    >
-                      <Cpu className="w-3.5 h-3.5 text-accent" />
-                      <span>Inspect Microservices</span>
-                    </button>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -514,7 +596,7 @@ export default function ProjectsSection() {
         {/* CASE STUDY 04: BIDBLITZ (High-Concurrency Terminal Ledger Card) */}
         {/* ========================================================================= */}
         {(() => {
-          const p = projects[3];
+          const p = projects.find((item) => item.id === "bidblitz") || projects[3];
           return (
             <motion.article
               key={p.id}
@@ -535,10 +617,10 @@ export default function ProjectsSection() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <div className="lg:col-span-7 space-y-4">
                   <div>
-                    <h3 className="font-serif text-2xl sm:text-4xl text-text-primary">
+                    <h3 className="font-sans font-bold text-2xl sm:text-4xl text-text-bright hover:text-accent transition-colors">
                       {p.title}
                     </h3>
-                    <p className="text-accent font-serif italic text-lg sm:text-xl mt-1">
+                    <p className="text-accent font-sans font-medium text-lg sm:text-xl mt-1">
                       {p.tagline}
                     </p>
                   </div>
@@ -579,6 +661,46 @@ export default function ProjectsSection() {
                         <span>PostgreSQL Locking &amp; ACID Pipeline</span>
                       </div>
 
+                      {/* Inline SVG Pipeline Diagram for BidBlitz */}
+                      <svg
+                        viewBox="0 0 540 120"
+                        className="w-full h-auto text-text-primary"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        {/* Step 1: WebSocket Inbound */}
+                        <rect x="5" y="32" width="95" height="56" rx="6" className="fill-surface stroke-border-strong" strokeWidth="1.2" />
+                        <text x="52" y="56" textAnchor="middle" className="fill-text-primary text-[8.5px] font-mono font-medium">WebSocket Bid</text>
+                        <text x="52" y="70" textAnchor="middle" className="fill-text-muted text-[7px] font-mono">1,000+ Concurrent</text>
+
+                        {/* Arrow 1 */}
+                        <path d="M100 60 H120" stroke="var(--accent)" strokeWidth="1.5" />
+                        <polygon points="120,60 114,56 114,64" fill="var(--accent)" />
+
+                        {/* Step 2: JWT & Bcrypt Gate */}
+                        <rect x="120" y="32" width="105" height="56" rx="6" className="fill-surface stroke-border-strong" strokeWidth="1.2" />
+                        <text x="172" y="56" textAnchor="middle" className="fill-text-primary text-[8.5px] font-mono font-medium">JWT &amp; Bcrypt</text>
+                        <text x="172" y="70" textAnchor="middle" className="fill-text-muted text-[7px] font-mono">Salt Cost 10</text>
+
+                        {/* Arrow 2 */}
+                        <path d="M225 60 H245" stroke="var(--accent)" strokeWidth="1.5" />
+                        <polygon points="245,60 239,56 239,64" fill="var(--accent)" />
+
+                        {/* Step 3: PostgreSQL Serializable Row Lock */}
+                        <rect x="245" y="32" width="165" height="56" rx="6" className="fill-surface stroke-accent" strokeWidth="1.5" />
+                        <text x="327" y="56" textAnchor="middle" className="fill-accent text-[9px] font-mono font-bold">PostgreSQL Serializable</text>
+                        <text x="327" y="70" textAnchor="middle" className="fill-text-primary text-[7px] font-mono">SELECT ... FOR UPDATE Lock</text>
+
+                        {/* Arrow 3 */}
+                        <path d="M410 60 H430" stroke="var(--accent)" strokeWidth="1.5" />
+                        <polygon points="430,60 424,56 424,64" fill="var(--accent)" />
+
+                        {/* Step 4: Broadcast */}
+                        <rect x="430" y="32" width="105" height="56" rx="6" className="fill-surface stroke-border-strong" strokeWidth="1.2" />
+                        <text x="482" y="56" textAnchor="middle" className="fill-text-primary text-[8.5px] font-mono font-medium">Room Broadcast</text>
+                        <text x="482" y="70" textAnchor="middle" className="fill-accent text-[7.5px] font-mono">&lt;200ms Peer Sync</text>
+                      </svg>
+
                       <div className="space-y-2 text-[11px] text-text-secondary">
                         <div className="p-2 rounded bg-surface border border-border-subtle">
                           <span className="text-accent font-bold">STEP 1:</span> Incoming WebSocket Bid
@@ -587,7 +709,7 @@ export default function ProjectsSection() {
                           <span className="text-accent font-bold">STEP 2:</span> JWT &amp; Bcrypt Auth Salt (Factor 10)
                         </div>
                         <div className="p-2 rounded bg-surface border border-border-subtle">
-                          <span className="text-accent font-bold">STEP 3:</span> <code>SELECT ... FOR UPDATE</code> Row Lock
+                          <span className="text-accent font-bold">STEP 3:</span> <code>SELECT ... FOR UPDATE</code> Serializable Row Lock
                         </div>
                         <div className="p-2 rounded bg-surface border border-border-subtle">
                           <span className="text-accent font-bold">STEP 4:</span> Atomic Transaction Commit &amp; Broadcast
@@ -605,25 +727,27 @@ export default function ProjectsSection() {
               <div className="pt-6 border-t border-border-subtle flex flex-wrap items-center justify-between gap-4">
                 <div className="flex flex-wrap gap-2">
                   {p.technologies.map((t) => (
-                    <span
+                    <a
                       key={t}
-                      className="px-2.5 py-1 rounded bg-badge text-[11px] font-mono text-text-secondary border border-border-subtle"
+                      href="#skills"
+                      className="px-2.5 py-1 rounded bg-badge text-[11px] font-mono text-text-secondary border border-border-subtle hover:border-accent hover:text-accent transition-colors"
                     >
                       {t}
-                    </span>
+                    </a>
                   ))}
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
                   {p.liveUrl && (
                     <a
                       href={p.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-accent text-white hover:bg-accent-hover text-xs font-mono font-medium transition-colors"
+                      className="btn-brittany min-h-[44px] min-w-[44px] inline-flex items-center justify-center p-2.5 rounded-md border border-accent text-accent bg-transparent hover:bg-accent/10 hover:-translate-y-1 hover:shadow-[3px_3px_0_0_#64ffda] focus-visible:outline-dashed focus-visible:outline-accent transition-all duration-200"
+                      title="Live Demo"
+                      aria-label={`${p.title} Live Demo`}
                     >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Live Demo</span>
+                      <ExternalLink className="w-4 h-4 text-accent" />
                     </a>
                   )}
                   {p.githubUrl && (
@@ -631,15 +755,16 @@ export default function ProjectsSection() {
                       href={p.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-surface text-text-primary hover:bg-subtle border border-border-subtle text-xs font-mono transition-colors"
+                      className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center p-2.5 rounded-md bg-surface text-text-primary hover:border-accent hover:text-accent hover:bg-accent/5 border border-border-subtle transition-all duration-200 hover:-translate-y-0.5"
+                      title="GitHub Repository"
+                      aria-label={`${p.title} GitHub Repository`}
                     >
-                      <Github className="w-3.5 h-3.5" />
-                      <span>Repository</span>
+                      <Github className="w-4 h-4" />
                     </a>
                   )}
                   <button
                     onClick={() => handleOpenModal(p)}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-surface text-text-primary hover:bg-subtle border border-border-strong text-xs font-mono transition-colors"
+                    className="btn-brittany min-h-[44px] inline-flex items-center gap-1.5 px-3.5 py-2 rounded-md border border-accent text-accent bg-transparent hover:bg-accent/10 hover:-translate-y-1 hover:shadow-[3px_3px_0_0_#64ffda] focus-visible:outline-dashed focus-visible:outline-accent text-xs font-mono font-medium transition-all duration-200"
                   >
                     <Terminal className="w-3.5 h-3.5 text-accent" />
                     <span>Inspect Transaction Engine</span>

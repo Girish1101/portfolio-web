@@ -190,48 +190,6 @@ export const resumeData = {
       },
     },
     {
-      id: "meetlnk",
-      title: "Meetlnk",
-      tagline: "Meeting Intelligence & RAG Platform with Hybrid BM25 & Dense Search",
-      category: "GenAI & RAG",
-      period: "Aug 2026 – Sept 2026",
-      featured: true,
-      technologies: ["FastAPI", "Python", "LangChain", "Pinecone", "OpenAI API", "Next.js"],
-      metrics: [
-        { label: "Context Token Pruning", value: "42%" },
-        { label: "Semantic QA Relevancy", value: ">94%" },
-        { label: "Retrieval Architecture", value: "Hybrid BM25 + Dense" },
-      ],
-      bulletPoints: [
-        "End-to-end meeting intelligence platform leveraging RAG to parse long conversation transcripts and extract timestamped action items.",
-        "Implemented speaker-turn sliding window chunking and hybrid retrieval: BM25 sparse lexical search plus dense vector similarity over Pinecone.",
-        "Cross-encoder re-ranking to prune retrieval noise, cutting context token overhead by 42% and lifting factual answer relevancy to >94% on semantic QA benchmarks.",
-      ],
-      liveUrl: "https://meetlnk-ai.vercel.app",
-      githubUrl: "https://github.com/Girish1101/meetlnk",
-      architecture: {
-        problem: "Standard naive fixed-token chunking destroys conversational context in multi-party meetings, losing speaker attribution and filling prompt windows with irrelevant banter.",
-        myRole: "Designed the ingestion parser, hybrid retrieval pipeline, re-ranking scoring layer, and Next.js transcript viewer interface.",
-        pipeline: [
-          "Raw Meeting Audio / Transcript Ingestion",
-          "Speaker-Turn Sliding Window Chunking (Preserves Dialogue Context)",
-          "Dual Indexing: BM25 Lexical + Pinecone Dense Embeddings",
-          "Cross-Encoder Re-Ranking Stage (Top-15 to Top-5 Relevancy)",
-          "OpenAI API Prompt Synthesis with Timestamp Attribution",
-        ],
-        keyDecisions: [
-          "Employed speaker-turn segmentation instead of naive 500-token cuts to prevent dialogue fragmentation.",
-          "Paired BM25 for precise acronym/name recall with dense embeddings for conceptual thematic search.",
-          "Applied a cross-encoder model to compute joint query-context attention before LLM injection, cutting 42% token cost.",
-        ],
-        results: [
-          "42% reduction in prompt token consumption compared to un-reranked vector baselines.",
-          ">94% factual relevancy achieved on evaluated transcript question-answering benchmark sets.",
-          "Sub-second semantic search over 2-hour long recorded meetings.",
-        ],
-      },
-    },
-    {
       id: "traceid",
       title: "TraceID",
       tagline: "Investigative Facial Landmarking & Vector Similarity Retrieval Engine",
@@ -249,7 +207,7 @@ export const resumeData = {
         "Connected Next.js frontend to Python Flask microservices for real-time MTCNN facial landmarking and 512-dimensional FaceNet embeddings stored in Neon PostgreSQL.",
         ">96% candidate retrieval accuracy and <120ms per query search latency through L2-normalized feature vector indexing.",
       ],
-      liveUrl: "https://traceid-demo.vercel.app",
+      liveUrl: "https://girish1101.github.io/TraceID/",
       githubUrl: "https://github.com/Girish1101/traceid",
       architecture: {
         problem: "Investigative field photos suffer from severe lighting variation, tilt angles, and noise, causing standard Euclidean comparisons to fail or produce high query latency (>1.8s) across large dossier collections.",
@@ -275,6 +233,48 @@ export const resumeData = {
       },
     },
     {
+      id: "meetlnk",
+      title: "Meetlnk",
+      tagline: "Meeting Intelligence & RAG Platform with Hybrid BM25 & Dense Search",
+      category: "GenAI & RAG",
+      period: "Aug 2026 – Sept 2026",
+      featured: true,
+      technologies: ["FastAPI", "Python", "LangChain", "Pinecone", "OpenAI API", "Next.js"],
+      metrics: [
+        { label: "Context Token Pruning", value: "42%" },
+        { label: "Semantic QA Relevancy", value: ">94%" },
+        { label: "Retrieval Architecture", value: "Hybrid BM25 + Dense" },
+      ],
+      bulletPoints: [
+        "End-to-end meeting intelligence platform leveraging RAG to parse long conversation transcripts and extract timestamped action items.",
+        "Implemented speaker-turn sliding window chunking and hybrid retrieval: BM25 sparse lexical search plus dense vector similarity over Pinecone.",
+        "Cross-encoder re-ranking to prune retrieval noise, cutting context token overhead by 42% and lifting factual answer relevancy to >94% on semantic QA benchmarks.",
+      ],
+      liveUrl: "https://girish1101.github.io/Meetlnk/",
+      githubUrl: "https://github.com/Girish1101/meetlnk",
+      architecture: {
+        problem: "Standard naive fixed-token chunking destroys conversational context in multi-party meetings, losing speaker attribution and filling prompt windows with irrelevant banter.",
+        myRole: "Designed the ingestion parser, hybrid retrieval pipeline, re-ranking scoring layer, and Next.js transcript viewer interface.",
+        pipeline: [
+          "Raw Meeting Audio / Transcript Ingestion",
+          "Speaker-Turn Sliding Window Chunking (Preserves Dialogue Context)",
+          "Dual Indexing: BM25 Lexical + Pinecone Dense Embeddings",
+          "Cross-Encoder Re-Ranking Stage (Top-15 to Top-5 Relevancy)",
+          "OpenAI API Prompt Synthesis with Timestamp Attribution",
+        ],
+        keyDecisions: [
+          "Employed speaker-turn segmentation instead of naive 500-token cuts to prevent dialogue fragmentation.",
+          "Paired BM25 for precise acronym/name recall with dense embeddings for conceptual thematic search.",
+          "Applied a cross-encoder model to compute joint query-context attention before LLM injection, cutting 42% token cost.",
+        ],
+        results: [
+          "42% reduction in prompt token consumption compared to un-reranked vector baselines.",
+          ">94% factual relevancy achieved on evaluated transcript question-answering benchmark sets.",
+          "Sub-second semantic search over 2-hour long recorded meetings.",
+        ],
+      },
+    },
+    {
       id: "bidblitz",
       title: "BidBlitz",
       tagline: "High-Concurrency Real-Time Auction & Bidding Engine",
@@ -292,7 +292,7 @@ export const resumeData = {
         "Secure authentication pipeline with JWT and bcrypt salted hashing to safeguard bid submissions and account state.",
         "Normalized relational schema with optimized indexing and foreign key constraints, reducing average query retrieval time by 35%.",
       ],
-      liveUrl: "https://bidblitz-auction.vercel.app",
+      liveUrl: "https://dbms-taupe-iota.vercel.app/",
       githubUrl: "https://github.com/Girish1101/bidblitz",
       architecture: {
         problem: "Simultaneous bids arriving in the final seconds of an auction trigger race conditions, double incrementation, and connection starvation if not handled with strict transactional isolation.",
@@ -404,16 +404,16 @@ export const resumeData = {
 
   leadership: [
     {
-      role: "Co-Convener",
-      organization: "Yoga Club, NIT Karnataka",
-      period: "Feb 2024 – Feb 2026",
-      description: "Planned and coordinated club events and wellness workshops, driving engagement for 150+ active campus members.",
-    },
-    {
       role: "Event Planner & Publicity Coordinator",
       organization: "SPIC MACAY, NITK Chapter",
       period: "March 2024 – Present",
       description: "Promotes India's cultural heritage through concerts, masterclasses, and classical art performances on campus.",
+    },
+    {
+      role: "Co-Convener",
+      organization: "Yoga Club, NIT Karnataka",
+      period: "Feb 2024 – Feb 2026",
+      description: "Planned and coordinated club events and wellness workshops, driving engagement for 150+ active campus members.",
     },
   ] as Leadership[],
 };

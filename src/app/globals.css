@@ -4,38 +4,46 @@
 
 @layer base {
   :root {
-    /* Editorial Light Mode (Warm tactile paper, ink-black text, vermilion accent) */
-    --bg-page: #fbfbf9;
-    --bg-surface: #f4f3ed;
-    --bg-surface-elevated: #ffffff;
-    --bg-subtle: #eae8df;
-    --text-primary: #141416;
-    --text-secondary: #4a4d52;
-    --text-muted: #767b85;
-    --border-subtle: #e3e0d5;
-    --border-strong: #c8c5b8;
-    --accent: #c8431e;
-    --accent-subtle: #fbeee8;
-    --accent-hover: #b03816;
-    --badge-bg: #eceae1;
+    /* High-Contrast Light Mode (Crisp technical slate paper & deep teal accent) */
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #f1f5f9;
+    --bg-subtle: #e2e8f0;
+    --dark-navy: #020c1b;
+    --navy-shadow: rgba(2, 12, 27, 0.08);
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --text-bright: #020617;
+    --border-subtle: #e2e8f0;
+    --border-strong: #cbd5e1;
+    --accent: #0f766e;
+    --accent-subtle: rgba(15, 118, 110, 0.1);
+    --accent-hover: #0d9488;
+    --badge-bg: #f1f5f9;
   }
 
   .dark {
-    /* Technical Workshop Ink Dark Mode (Deep drafting ink, warm chalk text) */
-    --bg-page: #0d0f12;
-    --bg-surface: #14171c;
-    --bg-surface-elevated: #1a1e24;
-    --bg-subtle: #21262f;
-    --text-primary: #f2f1ec;
-    --text-secondary: #a3a7b0;
-    --text-muted: #6e737d;
-    --border-subtle: #222730;
-    --border-strong: #333a46;
-    --accent: #e15532;
-    --accent-subtle: #291813;
-    --accent-hover: #ef6745;
-    --badge-bg: #1c212a;
+    /* Brittany Chiang v4 Canonical Dark Mode (Deep drafting navy & cyan accent) */
+    --bg-page: #0a192f;
+    --bg-surface: #112240;
+    --bg-surface-elevated: #172a45;
+    --bg-subtle: #233554;
+    --dark-navy: #020c1b;
+    --navy-shadow: rgba(2, 12, 27, 0.7);
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    --text-muted: #a8b2d1;
+    --text-bright: #e6f1ff;
+    --border-subtle: #233554;
+    --border-strong: #303C55;
+    --accent: #64ffda;
+    --accent-subtle: rgba(100, 255, 218, 0.1);
+    --accent-hover: #64ffda;
+    --badge-bg: #112240;
   }
+
+
 
   html {
     scroll-behavior: smooth;
@@ -50,14 +58,50 @@
     transition: background-color 0.25s ease, color 0.25s ease;
   }
 
-  /* Fluid typography utilities */
+  /* Fluid typography base styles */
   h1, .hero-display {
-    font-family: var(--font-serif), Georgia, serif;
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: clamp(2.5rem, 1.6rem + 3.88vw, 4.75rem);
+    line-height: 1.06;
     letter-spacing: -0.03em;
   }
 
-  h2, h3, h4 {
+  h2, .section-title {
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: clamp(1.85rem, 1.2rem + 2.5vw, 3rem);
+    line-height: 1.15;
     letter-spacing: -0.02em;
+  }
+
+  h3 {
+    letter-spacing: -0.02em;
+    font-size: clamp(1.15rem, 0.95rem + 1.0vw, 1.5rem);
+    line-height: 1.3;
+  }
+
+  h4 {
+    letter-spacing: -0.02em;
+  }
+
+  /* Global visible focus ring styling (WCAG AA 2.4.7 Focus Visible) */
+  :focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width, 0px) var(--tw-ring-offset-color, #fff);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width, 0px)) var(--accent);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  }
+
+  /* Global reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   /* Custom subtle scrollbar */
@@ -89,12 +133,46 @@
     height: 100%;
     pointer-events: none;
     z-index: 999;
-    opacity: 0.04;
+    opacity: 0.015;
     background-image: url("/haikei/grain.svg");
   }
 
   .dark .grain-overlay {
-    opacity: 0.055;
+    opacity: 0.015;
+  }
+}
+
+/* Brittany Chiang v4 Outlined Cyan Button */
+.btn-brittany {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background-color: transparent;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.btn-brittany:hover {
+  background-color: var(--accent-subtle);
+  transform: translateY(-3px);
+  box-shadow: 3px 3px 0 0 var(--accent);
+}
+
+.btn-brittany:focus-visible {
+  outline: 2px dashed var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-brittany {
+    transform: none !important;
+    transition: none !important;
+  }
+  .btn-brittany:hover {
+    transform: none !important;
   }
 }
 
@@ -127,12 +205,80 @@
   button:not(:disabled),
   [role="button"],
   .cursor-craft {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='4' fill='%23c8431e'/%3E%3Ccircle cx='12' cy='12' r='8' stroke='%23c8431e' stroke-width='1.5' stroke-opacity='0.45'/%3E%3C/svg%3E") 12 12, pointer;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='4' fill='%2364ffda'/%3E%3Ccircle cx='12' cy='12' r='8' stroke='%2364ffda' stroke-width='1.5' stroke-opacity='0.45'/%3E%3C/svg%3E") 12 12, pointer;
   }
 
   .dark a,
   .dark button:not(:disabled),
   .dark [role="button"] {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='4' fill='%23e15532'/%3E%3Ccircle cx='12' cy='12' r='8' stroke='%23e15532' stroke-width='1.5' stroke-opacity='0.5'/%3E%3C/svg%3E") 12 12, pointer;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='4' fill='%2364ffda'/%3E%3Ccircle cx='12' cy='12' r='8' stroke='%2364ffda' stroke-width='1.5' stroke-opacity='0.5'/%3E%3C/svg%3E") 12 12, pointer;
   }
 }
+
+@layer utilities {
+  /* Fluid clamp typography reusable utility classes */
+  .font-fluid-hero {
+    font-size: clamp(2.5rem, 1.6rem + 3.88vw, 4.75rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+  }
+
+  .font-fluid-section {
+    font-size: clamp(1.85rem, 1.2rem + 2.5vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .font-fluid-subhead {
+    font-size: clamp(1.15rem, 0.95rem + 1.0vw, 1.5rem);
+    line-height: 1.3;
+  }
+
+  .font-fluid-body {
+    font-size: clamp(0.875rem, 0.82rem + 0.24vw, 1.0rem);
+    line-height: 1.6;
+  }
+
+  .font-fluid-mono {
+    font-size: clamp(0.6875rem, 0.63rem + 0.24vw, 0.8125rem);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Global Print Rules (R1 Single-Page Resume Printing) */
+@media print {
+  header,
+  aside,
+  footer,
+  nav,
+  main > section,
+  main > div.print\:hidden,
+  .print\:hidden,
+  #hero,
+  #about,
+  #trajectory,
+  #work,
+  #skills,
+  #contact,
+  .grain-overlay,
+  [aria-label="Open Command Menu"],
+  [data-sonner-toaster] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  body, html {
+    background: #ffffff !important;
+    color: #111827 !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  @page {
+    size: letter portrait;
+    margin: 6mm 10mm;
+  }
+}
+

@@ -23,10 +23,7 @@ const monoFont = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfbf9" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d0f12" },
-  ],
+  themeColor: "#0a192f",
   width: "device-width",
   initialScale: 1,
 };
@@ -125,9 +122,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-page text-text-primary antialiased selection:bg-accent/20 selection:text-accent font-sans relative">
-        <div className="grain-overlay" aria-hidden="true" />
+        <div className="grain-overlay print:hidden" aria-hidden="true" />
         {children}
-        <Toaster position="bottom-right" richColors />
+        <div className="print:hidden">
+          <Toaster position="bottom-right" richColors />
+        </div>
       </body>
     </html>
   );

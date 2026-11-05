@@ -36,6 +36,8 @@ export default function TimelineSection() {
         "Built WireMock suite of 43 calibrated stubs from 1.5M+ logs, enabling CI testing under 400 req/s with a 94.6% pass rate over 160k+ checks without touching production services.",
       ],
       tags: ["LangGraph", "FastAPI", "Kafka", "Neo4j", "WireMock", "Docker"],
+      verificationUrl: "https://www.linkedin.com/in/girish-sharma-sde/",
+      verificationLabel: "LinkedIn Experience Verification",
     },
     {
       period: "Aug 2023 – Present",
@@ -52,21 +54,8 @@ export default function TimelineSection() {
         "Active contributor to student welfare and cultural bodies on campus.",
       ],
       tags: ["NITK Surathkal", "Computer Science", "Systems Programming", "GPA 7.70"],
-    },
-    {
-      period: "2023",
-      role: "All India Rank 1883 in JEE Mains 2023",
-      entity: "National Testing Agency (NTA)",
-      category: "National Examination",
-      badge: "Top 0.18% of 1M+ Aspirants",
-      icon: Award,
-      summary:
-        "National competitive engineering entrance exam demonstrating advanced algorithmic velocity, mathematics, and problem solving.",
-      highlights: [
-        "Ranked AIR 1883 out of >1,000,000 candidates nationwide in JEE Mains 2023.",
-        "Qualified JEE Advanced 2023 with All India Rank 2616 for premier Indian Institutes of Technology.",
-      ],
-      tags: ["AIR 1883", "AIR 2616", "Top 0.18%", "National Merit"],
+      verificationUrl: "https://www.nitk.ac.in/",
+      verificationLabel: "NITK Surathkal Official Portal",
     },
     {
       period: "Feb 2024 – Feb 2026",
@@ -82,21 +71,25 @@ export default function TimelineSection() {
         "Fostered steady engagement for 150+ active participants across academic years.",
       ],
       tags: ["Campus Leadership", "150+ Active Members", "Wellness & Mindfulness"],
+      verificationUrl: "https://www.nitk.ac.in/",
+      verificationLabel: "NITK Student Affairs",
     },
     {
-      period: "March 2024 – Present",
-      role: "Event Planner & Publicity Coordinator",
-      entity: "SPIC MACAY, NITK Chapter",
-      category: "Cultural Leadership",
-      badge: "Heritage Arts",
-      icon: Users,
+      period: "2023",
+      role: "All India Rank 1883 in JEE Mains 2023",
+      entity: "National Testing Agency (NTA)",
+      category: "National Examination",
+      badge: "Top 0.18% of 1M+ Aspirants",
+      icon: Award,
       summary:
-        "Society for the Promotion of Indian Classical Music And Culture Amongst Youth.",
+        "National competitive engineering entrance exam demonstrating advanced mathematical reasoning, algorithmic thinking, and problem-solving under pressure.",
       highlights: [
-        "Coordinated artist logistics, stage production, and publicity campaigns for world-renowned classical musicians and dancers.",
-        "Organized lecture-demonstrations and immersive workshops to preserve and celebrate indigenous arts.",
+        "Ranked AIR 1883 out of >1,000,000 candidates nationwide in JEE Mains 2023.",
+        "Qualified JEE Advanced 2023 with All India Rank 2616 for premier Indian Institutes of Technology.",
       ],
-      tags: ["SPIC MACAY", "Publicity Coordination", "Cultural Heritage"],
+      tags: ["AIR 1883", "AIR 2616", "Top 0.18%", "National Merit"],
+      verificationUrl: "https://jeemain.nta.nic.in/",
+      verificationLabel: "National Testing Agency (NTA)",
     },
   ];
 
@@ -105,24 +98,24 @@ export default function TimelineSection() {
   };
 
   return (
-    <section id="trajectory" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <section id="trajectory" className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       {/* Section Header */}
       <motion.div {...sectionReveal} className="border-b border-border-subtle pb-8 mb-16">
         <div className="flex items-center gap-3 mb-2">
           <span className="font-mono text-xs text-accent uppercase tracking-widest font-semibold">
-            02 / TRAJECTORY
+            02 / EXPERIENCE & EDUCATION
           </span>
           <span className="h-px w-8 bg-border-strong" />
           <span className="font-mono text-xs text-text-muted">
-            Experience, Education &amp; Leadership
+            Internship, Degree &amp; Leadership
           </span>
         </div>
-        <h2 className="font-serif text-3xl sm:text-5xl text-text-primary tracking-tight font-normal">
-          Chronological Record
+        <h2 className="font-sans font-bold font-fluid-section text-text-bright tracking-tight">
+          Experience &amp; Education
         </h2>
         <p className="text-text-secondary text-sm sm:text-base max-w-2xl mt-3 leading-relaxed">
-          Industrial backend engineering at Tech Mahindra, undergraduate study at NITK Surathkal,
-          national academic ranks, and student leadership roles.
+          Industrial engineering at Tech Mahindra, undergraduate study at NITK Surathkal,
+          national academic ranks, and campus leadership.
         </p>
       </motion.div>
 
@@ -137,7 +130,7 @@ export default function TimelineSection() {
               key={idx}
               {...sectionReveal}
               className={`editorial-card rounded-xl border transition-all ${
-                isExpanded ? "border-border-strong bg-surface" : "border-border-subtle bg-surface/60"
+                isExpanded ? "border-accent/40 bg-surface shadow-[0_4px_20px_rgba(2,12,27,0.7)]" : "border-border-subtle bg-surface/70 hover:border-border-strong"
               }`}
             >
               {/* Collapsed Header / Click Bar */}
@@ -160,7 +153,7 @@ export default function TimelineSection() {
                         {item.badge}
                       </span>
                     </div>
-                    <h3 className="font-serif text-lg sm:text-xl font-medium text-text-primary">
+                    <h3 className="font-sans font-bold text-lg sm:text-xl text-text-bright">
                       {item.role}
                     </h3>
                     <p className="text-xs sm:text-sm text-text-secondary font-mono mt-0.5">
@@ -210,7 +203,21 @@ export default function TimelineSection() {
                       </ul>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 pt-2">
+                    {item.verificationUrl && (
+                      <div className="pt-2 border-t border-border-subtle">
+                        <a
+                          href={item.verificationUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 font-mono text-xs text-accent hover:underline"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          <span>{item.verificationLabel}</span>
+                        </a>
+                      </div>
+                    )}
+
+                    <div className="flex flex-wrap gap-2 pt-1">
                       {item.tags.map((tag) => (
                         <span
                           key={tag}

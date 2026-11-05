@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from "motion/react";
-import { ArrowDown, ArrowUpRight, Download, Terminal, Compass, Sparkles, MapPin, CheckCircle } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Terminal, Compass, Sparkles, MapPin, CheckCircle } from "lucide-react";
 import { resumeData } from "@/data/resume";
 import { MOTION_DURATIONS, MOTION_EASE } from "@/lib/motion";
 
@@ -63,18 +64,14 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
         {/* Left Column: Editorial Headline & Narrative (8 cols) */}
         <div className="lg:col-span-8 space-y-6">
           {/* Section Stamp */}
-          <div className="inline-flex items-center gap-3">
+          <div className="inline-flex flex-wrap items-center gap-2 sm:gap-3">
             <span className="font-mono text-xs text-accent uppercase tracking-widest font-semibold">
               00 / PROLOGUE
-            </span>
-            <span className="h-px w-8 bg-border-strong" />
-            <span className="font-mono text-xs text-text-muted">
-              NIT Karnataka &bull; Class of 2027
             </span>
           </div>
 
           {/* Staggered Line-by-Line Reveal Headline */}
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl leading-[1.08] tracking-tight text-text-primary">
+          <h1 className="font-sans font-bold font-fluid-hero tracking-tight text-text-bright">
             {headlineLines.map((line, idx) => (
               <span key={idx} className="block overflow-hidden">
                 <motion.span
@@ -88,9 +85,9 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
                   className="block relative"
                 >
                   {line === "into answers." ? (
-                    <span className="relative inline-block text-text-primary">
+                    <span className="relative inline-block text-text-bright">
                       into{" "}
-                      <span className="italic text-accent">answers.</span>
+                      <span className="text-accent">answers.</span>
                       {/* Hand-drawn craft underline SVG */}
                       <svg
                         className="absolute -bottom-2 left-14 w-32 sm:w-44 text-accent/80 overflow-visible"
@@ -142,20 +139,13 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
               style={{ x: springX, y: springY }}
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-md text-xs sm:text-sm font-mono font-medium text-white bg-accent hover:bg-accent-hover shadow-xs transition-colors"
+              className="btn-brittany min-h-[44px] inline-flex items-center gap-2.5 px-6 py-3.5 rounded-md text-xs sm:text-sm font-mono font-medium border border-accent text-accent bg-transparent hover:bg-accent/10 hover:-translate-y-1 hover:shadow-[3px_3px_0_0_#64ffda] focus-visible:outline-dashed focus-visible:outline-accent transition-all duration-200"
             >
               <span>See Selected Work</span>
-              <ArrowDown className="w-4 h-4" />
+              <ArrowDown className="w-4 h-4 text-accent" />
             </motion.a>
 
             {/* Secondary CTA */}
-            <button
-              onClick={onOpenResumeModal}
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-md text-xs sm:text-sm font-mono font-medium text-text-primary border border-border-strong bg-surface hover:bg-subtle transition-colors"
-            >
-              <Download className="w-4 h-4 text-accent" />
-              <span>Review Resume</span>
-            </button>
           </motion.div>
         </div>
 
@@ -167,38 +157,43 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
           transition={{ duration: MOTION_DURATIONS.deliberate, delay: 0.2, ease: MOTION_EASE }}
           className="lg:col-span-4"
         >
-          <div className="editorial-card p-6 rounded-xl space-y-4 relative overflow-hidden">
-            {/* Corner Drafting Index */}
-            <div className="flex items-center justify-between border-b border-border-subtle pb-3 font-mono text-[11px] text-text-muted">
-              <span className="flex items-center gap-1.5 text-text-primary font-semibold">
-                <MapPin className="w-3.5 h-3.5 text-accent" /> Surathkal, IN
-              </span>
-              <span>13.0108° N, 74.7943° E</span>
+          <div className="editorial-card p-6 rounded-2xl space-y-4 relative overflow-hidden">
+            {/* Location Header */}
+            <div className="flex items-center gap-1.5 border-b border-border-subtle pb-3 font-mono text-[11px]">
+              <MapPin className="w-3.5 h-3.5 text-accent" />
+              <span className="text-text-primary font-semibold">Surathkal, IN</span>
             </div>
 
-            {/* Tactile Identity / Duotone Frame */}
-            <div className="relative aspect-4/3 rounded-lg overflow-hidden border border-border-subtle bg-subtle flex items-center justify-center p-4">
-              <div className="text-center space-y-2">
-                <div className="w-16 h-16 rounded-full mx-auto border-2 border-accent/60 bg-surface flex items-center justify-center font-serif text-2xl font-bold text-accent shadow-xs">
-                  GS
-                </div>
-                <div>
-                  <h3 className="font-serif text-lg font-medium text-text-primary">
-                    Girish Sharma
-                  </h3>
-                  <p className="font-mono text-xs text-text-muted">
-                    B.Tech CS &bull; GPA: {personal.gpa || "7.70"}
-                  </p>
-                </div>
-                <div className="pt-1">
-                  <span className="inline-block px-2.5 py-1 rounded bg-badge text-[11px] font-mono text-text-secondary border border-border-subtle">
-                    JEE Mains AIR 1883
-                  </span>
-                </div>
+            {/* Tactile Identity / Duotone Real Photo Frame */}
+            <div className="relative aspect-square w-full max-w-[320px] mx-auto rounded-2xl overflow-hidden border border-border-strong/40 bg-surface shadow-md group">
+              <Image
+                src="/photo.webp"
+                alt="Girish Sharma"
+                width={320}
+                height={320}
+                priority
+                className="w-full h-full object-cover object-center filter contrast-[1.02] brightness-[0.99] transition-transform duration-500 group-hover:scale-105"
+              />
+              {/* Soft tactile subtle grain / duotone vignette overlay */}
+              <div
+                className="absolute inset-0 pointer-events-none rounded-2xl bg-radial from-transparent via-transparent to-black/10 dark:to-black/35"
+                aria-hidden="true"
+              />
+              {/* Floating micro-badge overlay */}
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-3 py-1.5 rounded-lg bg-surface/90 backdrop-blur-md border border-border-subtle/80 text-[11px] font-mono">
+                <span className="font-semibold text-text-primary">Girish Sharma</span>
+                <span className="text-accent font-medium">NITK &bull; 7.70 GPA</span>
               </div>
             </div>
 
-            {/* Authentic Currently Line */}
+            {/* JEE Rank Badge */}
+            <div className="flex items-center justify-center pt-1">
+              <span className="inline-block px-2.5 py-1 rounded-md bg-badge text-[11px] font-mono text-accent font-medium border border-border-subtle">
+                JEE Mains AIR 1883 &bull; Top 0.18%
+              </span>
+            </div>
+
+            {/* Currently Line */}
             <div className="pt-2 border-t border-border-subtle">
               <div className="flex items-start gap-2 text-xs text-text-secondary font-mono leading-relaxed">
                 <span className="text-accent mt-0.5 shrink-0">&bull;</span>
@@ -214,12 +209,12 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
 
       {/* Bottom Editorial Meta Bar */}
       <div className="pt-12 mt-8 border-t border-border-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs text-text-muted">
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4">
           <span>01 TECH MAHINDRA (AI RCA)</span>
           <span className="opacity-40">/</span>
-          <span>02 MEETLNK (RAG)</span>
+          <span>02 TRACEID (VISION)</span>
           <span className="opacity-40">/</span>
-          <span>03 TRACEID (VISION)</span>
+          <span>03 MEETLNK (RAG)</span>
           <span className="opacity-40">/</span>
           <span>04 BIDBLITZ</span>
         </div>

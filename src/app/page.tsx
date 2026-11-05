@@ -12,6 +12,7 @@ import ContactSection from "@/components/ContactSection";
 import ResumeModal from "@/components/ResumeModal";
 import CommandPalette from "@/components/CommandPalette";
 import SectionDivider from "@/components/SectionDivider";
+import SideRails from "@/components/SideRails";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { Terminal } from "lucide-react";
 
@@ -33,42 +34,62 @@ export default function Home() {
   return (
     <ThemeProvider>
       <MotionConfig reducedMotion="user">
-        <main className="relative min-h-screen bg-page text-text-primary selection:bg-accent/20 selection:text-accent font-sans">
-          {/* Navigation Bar */}
-          <Navbar
-            onOpenResumeModal={() => setResumeModalOpen(true)}
-            onOpenCommandPalette={() => setCommandPaletteOpen(true)}
-          />
+        <main className="relative min-h-screen bg-page text-text-primary selection:bg-accent/20 selection:text-accent font-sans print:bg-white print:p-0 print:m-0">
+          <div className="print:hidden">
+            {/* Navigation Bar */}
+            <Navbar
+              onOpenResumeModal={() => setResumeModalOpen(true)}
+              onOpenCommandPalette={() => setCommandPaletteOpen(true)}
+            />
 
-          {/* 00 / PROLOGUE: Hero */}
-          <Hero onOpenResumeModal={() => setResumeModalOpen(true)} />
+            {/* 00 / PROLOGUE: Hero */}
+            <Hero onOpenResumeModal={() => setResumeModalOpen(true)} />
 
-          {/* Haikei Divider 01: Wave */}
-          <SectionDivider variant="wave" />
+            {/* Haikei Divider 01: Wave */}
+            <SectionDivider variant="wave" />
 
-          {/* 01 / SELECTED WORK: Flagship Case Studies */}
-          <ProjectsSection />
+            {/* 01 / ABOUT: Personal narrative & personality */}
+            <AboutSection />
 
-          {/* Haikei Divider 02: Steps (flipped horizontally) */}
-          <SectionDivider variant="steps" flipped="x" />
+            {/* Haikei Divider 02: Steps */}
+            <SectionDivider variant="steps" flipped="x" />
 
-          {/* 02 / TRAJECTORY: Timeline, Education, Leadership */}
-          <TimelineSection />
+            {/* 02 / EXPERIENCE & EDUCATION: Timeline */}
+            <TimelineSection />
 
-          {/* Haikei Divider 03: Peaks */}
-          <SectionDivider variant="peaks" />
+            {/* Haikei Divider 03: Peaks */}
+            <SectionDivider variant="peaks" />
 
-          {/* 03 / TECHNICAL ARSENAL: Shipped Skills Matrix */}
-          <SkillsSection />
+            {/* 03 / PROJECTS: Flagship case studies */}
+            <ProjectsSection />
 
-          {/* Haikei Divider 04: Wave (flipped vertically) */}
-          <SectionDivider variant="wave" flipped="y" />
+            {/* Haikei Divider 04: Wave (flipped vertically) */}
+            <SectionDivider variant="wave" flipped="y" />
 
-          {/* 04 / ABOUT: Narrative & Mindful Cadence */}
-          <AboutSection />
+            {/* 04 / SKILLS: Technical stack */}
+            <SkillsSection />
 
-          {/* 05 / CONTACT: Direct Communication & Footer */}
-          <ContactSection />
+            {/* 05 / CONTACT: Direct communication & footer */}
+            <ContactSection />
+
+            {/* Floating Vertical Side Rails */}
+            <SideRails />
+
+            {/* Floating Quick Command Menu Trigger */}
+            <div className="fixed bottom-6 right-20 xl:right-24 z-30 hidden md:block">
+              <button
+                onClick={() => setCommandPaletteOpen(true)}
+                className="min-h-[44px] flex items-center gap-2 px-3.5 py-2 rounded-full bg-surface border border-border-strong text-text-secondary hover:text-text-primary hover:border-accent shadow-md transition-all text-xs font-mono group"
+                aria-label="Open Command Menu"
+              >
+                <Terminal className="w-3.5 h-3.5 text-accent group-hover:rotate-12 transition-transform" />
+                <span>Menu</span>
+                <kbd className="px-1.5 py-0.5 rounded text-[10px] bg-subtle text-text-muted border border-border-subtle">
+                  ⌘K
+                </kbd>
+              </button>
+            </div>
+          </div>
 
           {/* Interactive Resume ATS Viewer & PDF Modal */}
           <ResumeModal
@@ -82,21 +103,6 @@ export default function Home() {
             onClose={() => setCommandPaletteOpen(false)}
             onOpenResume={() => setResumeModalOpen(true)}
           />
-
-          {/* Floating Quick Command Menu Trigger */}
-          <div className="fixed bottom-6 right-6 z-30 hidden md:block">
-            <button
-              onClick={() => setCommandPaletteOpen(true)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-border-strong text-text-secondary hover:text-text-primary hover:border-accent shadow-md transition-all text-xs font-mono group"
-              aria-label="Open Command Menu"
-            >
-              <Terminal className="w-3.5 h-3.5 text-accent group-hover:rotate-12 transition-transform" />
-              <span>Menu</span>
-              <kbd className="px-1.5 py-0.5 rounded text-[10px] bg-subtle text-text-muted border border-border-subtle">
-                ⌘K
-              </kbd>
-            </button>
-          </div>
         </main>
       </MotionConfig>
     </ThemeProvider>
