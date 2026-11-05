@@ -6,6 +6,7 @@ import { motion, useMotionValue, useSpring, useTransform, useScroll } from "moti
 import { ArrowDown, ArrowUpRight, Terminal, Compass, Sparkles, MapPin, CheckCircle } from "lucide-react";
 import { resumeData } from "@/data/resume";
 import { MOTION_DURATIONS, MOTION_EASE } from "@/lib/motion";
+import ParticleMesh from "@/components/ParticleMesh";
 
 interface HeroProps {
   onOpenResumeModal: () => void;
@@ -59,6 +60,9 @@ export default function Hero({ onOpenResumeModal }: HeroProps) {
         style={{ backgroundImage: `url('/haikei/hero-backdrop.svg')`, backgroundSize: "cover" }}
         aria-hidden="true"
       />
+
+      {/* Interactive Constellation Particle Mesh */}
+      <ParticleMesh />
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left Column: Editorial Headline & Narrative (8 cols) */}
